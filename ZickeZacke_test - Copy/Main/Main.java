@@ -17,6 +17,7 @@ public class Main {
     window.add(gamePanel);
         //ditmeduydinh
         //ditmemandAT
+        //12345
         // loz tien dit me may
     window.pack();
 
