@@ -17,6 +17,7 @@ public class Main {
     window.add(gamePanel);
         //ditmeduydinh
         //ditmemandAT
+        // loz tien dit me may
     window.pack();
 
     window.setLocationRelativeTo(null);
