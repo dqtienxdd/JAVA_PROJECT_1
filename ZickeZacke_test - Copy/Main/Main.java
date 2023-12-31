@@ -16,7 +16,7 @@ public class Main {
     GamePanel gamePanel = new GamePanel();
     window.add(gamePanel);
         //ditmeduydinh
-        //man dat da test 124
+        //man dat da test 124 5678
     window.pack();
 
     window.setLocationRelativeTo(null);
