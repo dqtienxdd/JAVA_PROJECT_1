@@ -16,6 +16,7 @@ public class Main {
     GamePanel gamePanel = new GamePanel();
     window.add(gamePanel);
         //ditmeduydinh
+        //ditmemandAT
     window.pack();
 
     window.setLocationRelativeTo(null);
