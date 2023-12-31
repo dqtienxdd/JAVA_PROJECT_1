@@ -17,6 +17,7 @@ public class Main {
     window.add(gamePanel);
         //ditmeduydinh
         //ditmemandAT
+        //1223
     window.pack();
 
     window.setLocationRelativeTo(null);
