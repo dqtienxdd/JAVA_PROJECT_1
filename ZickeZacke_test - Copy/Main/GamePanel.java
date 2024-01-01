@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import Entity.PLayer;
 import Tile.TileManager;
+import Octagon.OctagonManager;
 public class GamePanel extends JPanel implements Runnable{
     final int originalTilesize = 16;
     final int scale = 3;
@@ -16,9 +17,13 @@ public class GamePanel extends JPanel implements Runnable{
     public final int eggheight = 75;
     public final int maprow = 8;
     public final int mapcol = 6;
+    public final int octagonSize = 70;
+    
+
     int FPS = 10;
 
     TileManager tileM = new TileManager(this);
+    OctagonManager octagonM = new OctagonManager(this);
     
     Thread gameThread;
     PLayer player = new PLayer(this);
@@ -95,8 +100,11 @@ public class GamePanel extends JPanel implements Runnable{
         Graphics2D g2 = (Graphics2D)g;
 
         tileM.draw(g2);
+        octagonM.draw(g2);
         
         player.draw(g2);
+        
+
 
         g2.dispose();
 
