@@ -42,46 +42,46 @@ public class OctagonManager {
     public void getOctagonImage(){
         try {
             octagons[0] = new Octagon();
-            octagons[0].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/chick.png"));
+            octagons[0].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/chick.png"));
 
             octagons[1] = new Octagon();
-            octagons[1].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/chick.png"));
+            octagons[1].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/chick.png"));
 
             octagons[2] = new Octagon();
-            octagons[2].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/connhim.png"));
+            octagons[2].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/connhim.png"));
 
             octagons[3] = new Octagon();
-            octagons[3].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/eggs.png"));
+            octagons[3].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/eggs.png"));
 
             octagons[4] = new Octagon();
-            octagons[4].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/feather.png"));
+            octagons[4].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/feather.png"));
 
             octagons[5] = new Octagon();
-            octagons[5].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/flower.png"));
+            octagons[5].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/flower.png"));
 
             octagons[6] = new Octagon();
-            octagons[6].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/hotvitlon.png"));
+            octagons[6].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/hotvitlon.png"));
 
             octagons[7] = new Octagon();
-            octagons[7].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/omelette.png"));
+            octagons[7].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/omelette.png"));
 
             octagons[8] = new Octagon();
-            octagons[8].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/rabbit.png"));
+            octagons[8].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/rabbit.png"));
 
             octagons[9] = new Octagon();
-            octagons[9].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/sadchick.png"));
+            octagons[9].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/sadchick.png"));
 
             octagons[10] = new Octagon();
-            octagons[10].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/snail.png"));
+            octagons[10].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/snail.png"));
 
             octagons[11] = new Octagon();
-            octagons[11].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/worm.png"));
+            octagons[11].image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/worm.png"));
 
             backside = new Octagon();
-            backside.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/backside.png"));
+            backside.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside.png"));
 
             backside2 = new Octagon();
-            backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal shape/backside2.png"));
+            backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside2.png"));
             
             shuffleArray(octagons);
 
