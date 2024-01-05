@@ -26,19 +26,22 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int octagonSize = 70;
     public final int octagonHeight = 70;
     public final int octagonWidth = 70;
-    boolean flip=false;
-    int selected;
-    int count=0;
+    public boolean flip=false;
+    public int selected;
+    public int count=0;
     Timer timer;
 
-    
-   
+    //Game State
+    public int gameState;
+    public final int titleState = 0;
+    public final int playState = 1;
+ 
 
-    int FPS = 10;
+    int FPS = 60;
 
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
-    
+    UI ui = new UI(this);
     Thread gameThread;
     PLayer player = new PLayer(this);
     
@@ -46,14 +49,19 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     public GamePanel(){
         addMouseListener(this);
+        this.addMouseListener(new MouseListen());
+        this.setPreferredSize(new Dimension(screenWidth, screenHeight));
+        this.setBackground(Color.BLACK);
+        this.setDoubleBuffered(true);
+        this.setFocusable(true);
         timer = new Timer(50, this);
         timer.start();
-            this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-            this.setBackground(Color.BLACK);
-            this.setDoubleBuffered(true);
-            this.setFocusable(true);
+        
         }
     
+    public void setupGame(){
+        gameState = titleState;
+    }
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
@@ -115,10 +123,16 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-
-        tileM.draw(g2);
-        octagonM.draw(g2);
-        player.draw(g2);
+        //Titlescreen
+        if(gameState==titleState){
+            ui.draw(g2);
+        }
+        else{
+            tileM.draw(g2);
+            octagonM.draw(g2);
+            player.draw(g2);
+        }
+        
         g2.dispose();
 
     }
@@ -136,9 +150,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
        else
        {
         try {
-                Thread.sleep(2000);
+                Thread.sleep(500);
             } catch (InterruptedException e1) {
-                // TODO Auto-generated catch block
+                
                 e1.printStackTrace();
             }
         octagons[selected].setPicture("backside");
@@ -169,7 +183,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     @Override
     public void mouseReleased(MouseEvent e) {
-    
+        
     }
 
     @Override
