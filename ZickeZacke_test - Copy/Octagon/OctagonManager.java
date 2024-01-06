@@ -35,7 +35,7 @@ public class OctagonManager {
     public OctagonManager(GamePanel gp)
     {
         this.gp = gp;
-        octagons = new Octagon[12];
+        octagons = new Octagon[13];
     
         // mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         
@@ -88,10 +88,12 @@ public class OctagonManager {
             // backside2 = new Octagon();
             // backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside2.png"));
             shuffleArray(name);
+            
             for(int i=0; i<12; i++)
             {
                 octagons[i] = new Octagon(name[i],i);
             }
+            octagons[12] = new Octagon("null", 12);
             
             octagons[0].setX(300);
             octagons[0].setY(140);
