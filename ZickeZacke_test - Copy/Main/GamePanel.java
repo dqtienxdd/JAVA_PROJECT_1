@@ -177,9 +177,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         octagons[selected].setPicture("backside");
         selected = 12;
        }
-       
        repaint();
-
         }
        
     }
@@ -195,18 +193,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         
         int mx = e.getX();
         int my = e.getY();
-        if(gameState==titleState){
-            if(mx >= 261 && mx<= 261+240){
-                if(my >= 303 && my<= 303+48){
-                    gameState=playState;
-                }
-            }
-            if(mx >= 261 && mx<= 261+240){
-                if(my >= 303+48 && my<= 303+48+48){
-                    System.exit(1);
-                }
-            }
-        }
         if(gameState==playState){      
             flip=true;
             direction=1;     
@@ -220,6 +206,20 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
         
         }
+    
+        if(gameState==titleState){
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303 && my<= 303+48){
+                    gameState=playState;
+                }
+            }
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303+48 && my<= 303+48+48){
+                    System.exit(1);
+                }
+            }
+        }
+        
         
     }
 
