@@ -114,7 +114,7 @@ public class OctagonManager {
             octagons[6].setX(300);
             octagons[6].setY(365);
 
-            octagons[7].setX(390);
+            octagons[7].setX(396);
             octagons[7].setY(365);
 
             octagons[8].setX(204);

@@ -62,22 +62,7 @@ public class MouseListen implements MouseListener{
 
     @Override
     public void mouseEntered(java.awt.event.MouseEvent e) {
-        int mx = e.getX();
-        int my = e.getY();
-        if(mx >= 261 && mx<= 261+240){
-            if(my >= 303 && my<= 303+48){
-                chooseStart=true;
-            }
-        }else{
-            chooseStart=false;
-        }
-        if(mx >= 261 && mx<= 261+240){
-            if(my >= 303+48 && my<= 303+48+48){
-                chooseExit=true;
-            }
-        }else{
-            chooseExit=false;
-        }
+        
     }
 
     @Override

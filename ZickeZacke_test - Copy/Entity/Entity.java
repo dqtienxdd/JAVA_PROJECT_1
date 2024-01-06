@@ -3,7 +3,7 @@ import java.awt.image.BufferedImage;
 public class Entity {
     public int x, y;
     public int speed;
-    public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+    public BufferedImage chick1,chick2,chick3,chick4,chick5;
     
     public String direction;
     public int spriteCounter=0;

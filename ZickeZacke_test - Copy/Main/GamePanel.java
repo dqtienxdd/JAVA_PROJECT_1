@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int octagonSize = 70;
     public final int octagonHeight = 70;
     public final int octagonWidth = 70;
-
+    public final int chickensize = 90;
     public boolean flip=false;
     public int selected;
     public int count=0;
@@ -40,7 +40,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int playState = 1;
  
 
-    int FPS = 60;
+    int FPS = 50;
 
     MouseListen mouse;
     TileManager tileM = new TileManager(this);
@@ -191,7 +191,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         
         int mx = e.getX();
         int my = e.getY();
-        while(gameState==titleState){
+        if(gameState==titleState){
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
                     gameState=playState;
@@ -204,6 +204,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
         }
         if(gameState==playState){
+            
+            
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
