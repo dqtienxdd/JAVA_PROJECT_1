@@ -93,7 +93,7 @@ public class OctagonManager {
             {
                 octagons[i] = new Octagon(name[i],i);
             }
-            octagons[12] = new Octagon("null", 12);
+            octagons[12] = new Octagon("worm", 12);
             
             octagons[0].setX(300);
             octagons[0].setY(140);
