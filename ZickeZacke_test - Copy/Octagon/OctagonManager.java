@@ -20,13 +20,13 @@ public class OctagonManager {
     {
         return octagons;
     }
-    public static void shuffleArray(Octagon[] array) {
+    public static void shuffleArray(String[] array) {
         Random random = new Random();
         int n = array.length;
         
         for (int i = 0; i < n; i++) {
             int randomIndex = i + random.nextInt(n - i);
-            Octagon temp = array[i];
+            String temp = array[i];
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
         }
@@ -87,12 +87,12 @@ public class OctagonManager {
 
             // backside2 = new Octagon();
             // backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside2.png"));
-            
+            shuffleArray(name);
             for(int i=0; i<12; i++)
             {
                 octagons[i] = new Octagon(name[i],i);
             }
-
+            
             octagons[0].setX(300);
             octagons[0].setY(140);
 
@@ -128,7 +128,6 @@ public class OctagonManager {
 
             octagons[11].setX(492);
             octagons[11].setY(290);
-
             
 
         } catch (Exception e) {

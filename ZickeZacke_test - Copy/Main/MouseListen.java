@@ -1,11 +1,11 @@
 package Main;
-
+import Main.GamePanel;
 import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 
 import org.w3c.dom.events.MouseEvent;
-import Main.GamePanel;
+
 import Octagon.Octagon;
 import Octagon.OctagonManager;
 
@@ -14,7 +14,9 @@ import Octagon.OctagonManager;
 public class MouseListen implements MouseListener{
     GamePanel gp;
     UI ui;
-    
+    boolean chooseStart, chooseExit;
+    public String choose;
+
     @Override
     public void mouseClicked(java.awt.event.MouseEvent e) {
         
@@ -37,18 +39,19 @@ public class MouseListen implements MouseListener{
         // }
         // public Rectangle playButton = new Rectangle(261,303, 240, 48);
         // public Rectangle ExitButton = new Rectangle(261,303 + 48, 240, 48);
-        int mx = e.getX();
-        int my = e.getY();
-        if(mx >= 261 && mx<= 261+240){
-            if(my >= 303 && my<= 303+48){
-                gp.gameState = gp.playState;
-            }
-        }
-        if(mx >= 261 && mx<= 261+240){
-            if(my >= 303+48 && my<= 303+48+48){
-                System.exit(1);
-            }
-        }
+        // int mx = e.getX();
+        // int my = e.getY();
+        
+        // if(mx >= 261 && mx<= 261+240){
+        //     if(my >= 303 && my<= 303+48){
+        //         gameState=playState;
+        //     }
+        // }
+        // if(mx >= 261 && mx<= 261+240){
+        //     if(my >= 303+48 && my<= 303+48+48){
+        //         System.exit(1);
+        //     }
+        // }
         
     }
 
@@ -63,13 +66,17 @@ public class MouseListen implements MouseListener{
         int my = e.getY();
         if(mx >= 261 && mx<= 261+240){
             if(my >= 303 && my<= 303+48){
-                gp.ui.commandNum=1;
+                chooseStart=true;
             }
+        }else{
+            chooseStart=false;
         }
         if(mx >= 261 && mx<= 261+240){
             if(my >= 303+48 && my<= 303+48+48){
-                gp.ui.commandNum=2;
+                chooseExit=true;
             }
+        }else{
+            chooseExit=false;
         }
     }
 

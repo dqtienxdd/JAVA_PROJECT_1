@@ -5,7 +5,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 
+import Main.MouseListen;
 import javax.swing.*;
 import Entity.PLayer;
 import Tile.TileManager;
@@ -26,6 +28,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int octagonSize = 70;
     public final int octagonHeight = 70;
     public final int octagonWidth = 70;
+
     public boolean flip=false;
     public int selected;
     public int count=0;
@@ -39,13 +42,22 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     int FPS = 60;
 
+    MouseListen mouse;
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
     UI ui = new UI(this);
     Thread gameThread;
     PLayer player = new PLayer(this);
-    
-    
+     
+    public int getGameState() {
+        return this.gameState;
+    }
+    public int setGameState(int gameState) {
+        return this.gameState = gameState;
+    }
+    public int getplayState() {
+        return this.playState;
+    }
 
     public GamePanel(){
         addMouseListener(this);
@@ -116,9 +128,12 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
         }
     }
+    
     public void update(){
         player.update();
+        
     }
+   
     public void paintComponent(Graphics g){
         super.paintComponent(g);
 
@@ -138,7 +153,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     int direction =1;
     Octagon[] octagons = OctagonManager.getArray();
+    
+    
     public void actionPerformed(ActionEvent e) {
+        
        if(flip)
        {
             flip=octagons[selected].flip();
@@ -157,7 +175,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
         octagons[selected].setPicture("backside");
        }
-
+       
        repaint();
     }
 
@@ -170,15 +188,33 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void mousePressed(MouseEvent e) {
         flip=true;
         direction=1;
-
-        for(Octagon oct1: octagons)
-        {
-            if(oct1.collision(e.getX(), e.getY()))
-            {
-                selected=oct1.getIndex();
+        
+        int mx = e.getX();
+        int my = e.getY();
+        while(gameState==titleState){
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303 && my<= 303+48){
+                    gameState=playState;
+                }
             }
-            count++;
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303+48 && my<= 303+48+48){
+                    System.exit(1);
+                }
+            }
         }
+        if(gameState==playState){
+            for(Octagon oct1: octagons)
+            {
+                if(oct1.collision(e.getX(), e.getY()))
+                {
+                    selected=oct1.getIndex();
+                }
+                count++;
+            }
+        
+        }
+        
     }
 
     @Override
@@ -201,7 +237,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     //     width -=30*direction;
     //     x+=17
     // }
-
+        
     
     
 }

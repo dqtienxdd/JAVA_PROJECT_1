@@ -25,6 +25,12 @@ public class UI {
     public int commandNum = 0;
     public Rectangle playButton = new Rectangle(261,303, 240, 48);
     public Rectangle ExitButton = new Rectangle(261,303 + 48, 240, 48);
+    public int getcommandNum(){
+        return this.commandNum;
+    }
+    public int setcommandNum(int commandNum){
+        return this.commandNum;
+    }
     public UI(GamePanel gp){
         this.gp = gp;
         title = new Tile[10];
@@ -42,6 +48,8 @@ public class UI {
             e.printStackTrace();
         }
     }
+
+    
     public void draw(Graphics2D g2){
         this.g2 = g2;
 
