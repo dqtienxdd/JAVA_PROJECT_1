@@ -46,7 +46,7 @@ public class PLayer extends Entity {
             spriteCounter++;
         }
        
-        if(spriteCounter > 32){
+        if(spriteCounter > 20){
             if(spriteNum == 1){
                 spriteNum=2;
             }
@@ -104,7 +104,7 @@ public class PLayer extends Entity {
                 break;
         }
        
-        g2.drawImage(image, 100 , 180 , gp.chickensize, gp.chickensize, null);
+        g2.drawImage(image, 100 , 20, gp.chickensize, gp.chickensize, null);
     
     }
 }

@@ -9,6 +9,8 @@ import java.util.Random;
 
 import Main.MouseListen;
 import javax.swing.*;
+
+import Entity.FeatherManager;
 import Entity.PLayer;
 import Tile.TileManager;
 import Octagon.Octagon;
@@ -45,6 +47,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     MouseListen mouse;
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
+    FeatherManager featherM = new FeatherManager(this);
     UI ui = new UI(this);
     Thread gameThread;
     PLayer player = new PLayer(this);
@@ -130,6 +133,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
+        featherM.update();
         player.update();
         
     }
@@ -145,7 +149,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         else{
             tileM.draw(g2);
             octagonM.draw(g2);
+            featherM.draw(g2);
             player.draw(g2);
+            
         }
         
         g2.dispose();
