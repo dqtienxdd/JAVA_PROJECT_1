@@ -17,6 +17,7 @@ public class Octagon {
 
     public Image image;
     public boolean collision = false;
+    public boolean isBackSide = true;
 
     public Octagon(String name, int index)
     {
@@ -25,6 +26,14 @@ public class Octagon {
         this.name=name;
         this.index=index;
         setPicture("backside");
+    }
+    public boolean getIsBackSide()
+    {
+        return isBackSide;
+    }
+    public void setIsBackSide(boolean isBackSide)
+    {
+        this.isBackSide=isBackSide;
     }
     public int getX()
     {
@@ -105,6 +114,7 @@ public class Octagon {
         if(width==70 && direction == -1)
         {
             direction=1;
+            isBackSide= !(isBackSide);
             return false;
         }
         // setWidth(getWidth()-30*direction);
@@ -113,8 +123,7 @@ public class Octagon {
         // if(getWidth()<=0 || (getWidth()>=70))
         // {
         //     direction*=-1;
-        // }
-        
+        // }    
         return true;
     }
     

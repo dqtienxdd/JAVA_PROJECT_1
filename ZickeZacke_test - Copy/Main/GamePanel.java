@@ -158,42 +158,71 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void actionPerformed(ActionEvent e) {
         if(gameState==playState)
         {
-            if(flip)
-       {
-            flip=octagons[selected].flip();
-            if(octagons[selected].getWidth() <=0)
+                if(flip)
             {
-                octagons[selected].setPicture(octagons[selected].getName());
+                flip=octagons[selected].flip();
+                if(octagons[selected].getWidth() <=0)
+            {
+                if(octagons[selected].getIsBackSide()==true)
+                {
+                    octagons[selected].setPicture(octagons[selected].getName()); 
+                }
+                else{
+                    octagons[selected].setPicture("backside");
+                }
             }
-       }
-       else
-       {
-        try {
-                Thread.sleep(500);
-            } catch (InterruptedException e1) {
-                
-                e1.printStackTrace();
+            //System.out.println(octagons[selected].getIsBackSide());
+            
+            }  
+            
+            // else{
+            //     octagons[selected].setPicture(octagons[selected].getName());
+            //     System.out.println(octagons[selected].getWidth());
+            // }
+            // octagons[selected].setIsBackSide(false);
+            // selected=12;
             }
-        octagons[selected].setPicture("backside");
-        selected = 12;
-       }
+            
+            
+        
+        // else
+        // {
+        //     if(flip){
+        //     flip=octagons[selected].flip();
+        //     if(octagons[selected].getWidth() <=0)
+        //     {
+        //         octagons[selected].setPicture("backside");
+        //         System.out.println(octagons[selected].getWidth());
+        //     }
+        //     }
+        //     selected=12;
+        //     // else
+        //     // {
+        //     //     octagons[selected].setPicture("backside");
+        //     //     System.out.println(octagons[selected].getWidth());
+        //     //     octagons[selected].setIsBackSide(true);
+        //     //     selected=12;
+        //     // }
+        // }
+       
        repaint();
         }
-       
-    }
+    
+    
 
     @Override
     public void mouseClicked(MouseEvent e) {
         
     }
-
     @Override
+    
     public void mousePressed(MouseEvent e) {
         
-        
+        selected=12;
         int mx = e.getX();
         int my = e.getY();
-        if(gameState==playState){      
+        if(gameState==playState){
+            count++;      
             flip=true;
             direction=1;     
             for(Octagon oct1: octagons)
