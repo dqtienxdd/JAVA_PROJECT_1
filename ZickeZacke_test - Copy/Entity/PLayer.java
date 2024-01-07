@@ -27,11 +27,11 @@ public class PLayer extends Entity {
     }
     public void getPlayerImage(){
         try{
-            chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation/chickenpixel.png"));
-            chick2 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation/chickenpixel2.png"));
-            chick3 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation/chickenpixel3.png"));
-            chick4 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation/chickenpixel4.png"));
-            chick5 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation/chickenpixel3.png"));
+            chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel.png"));
+            chick2 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel2.png"));
+            chick3 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel3.png"));
+            chick4 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel4.png"));
+            chick5 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel3.png"));
         }catch(Exception e){
             e.printStackTrace();
         }
