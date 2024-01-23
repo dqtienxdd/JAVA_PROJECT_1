@@ -49,7 +49,6 @@ public class UI {
         }
     }
 
-    
     public void draw(Graphics2D g2){
         this.g2 = g2;
 
@@ -62,12 +61,7 @@ public class UI {
     }
     public void getTitleImage(){
         
-        try {
-            title[0] = new Tile();
-            title[0].image = ImageIO.read(getClass().getResourceAsStream("/res/Title/background2.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            title[0] = new Tile("background2", 0);
     }
     public void drawTitleScreen(){
         // g2.setFont(g2.getFont().deriveFont(Font.BOLD,66F));
@@ -81,7 +75,7 @@ public class UI {
         // g2.drawString(text, x, y);
         
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON); 
-        g2.drawImage(title[0].image, 0, 0, gp.screenWidth, gp.screenHeight, null);
+        g2.drawImage(title[0].getPicture(), 0, 0, gp.screenWidth, gp.screenHeight, null);
         int width = gp.tileSize*5;
         int height = gp.tileSize*2;
         int Xbox = getXforCenteredText(text)-gp.tileSize*3;
