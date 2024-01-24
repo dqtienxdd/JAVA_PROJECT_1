@@ -20,7 +20,7 @@ public class Entity {
     public int spriteCounter=0;
     public int spriteNum=1;
     public MapCoordinate[] xy;
-    public int playerposition1=19;
+    public int playerposition1=23;
     public int playerposition2=0;
     public int playerposition3=0;
     public int playerposition4=0;

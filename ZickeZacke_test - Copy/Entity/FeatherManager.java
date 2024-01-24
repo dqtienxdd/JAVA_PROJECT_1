@@ -58,7 +58,7 @@ public class FeatherManager extends Entity{
             xy[i].setY(y);
             x -= 5 + gp.eggwidth;
         }
-        for(int i=19; i>=19 &&i<23;i++){
+        for(int i=19; i>=19 &&i<=23;i++){
             xy[i].setX(x);
             xy[i].setY(y);
             y -= 5 + gp.eggheight;
@@ -125,7 +125,7 @@ public class FeatherManager extends Entity{
         
     }
     public void draw(Graphics2D g2){
-        playerposition1 = 19;
+        
         bluefeather = null;
         yellowfeather = null;
         whitefeather = null;
