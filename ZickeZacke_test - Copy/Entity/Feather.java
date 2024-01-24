@@ -9,7 +9,7 @@ import Main.GamePanel;
 
 public class Feather {
     GamePanel gp;
-    
+    int x,y;
     BufferedImage image;
     private int width;
     private int height;
@@ -22,6 +22,21 @@ public class Feather {
         this.name=name;
         this.index=index;
         
+    }
+    public void setX(int x)
+    {
+        this.x=x;
+    }
+    public void setY(int y)
+    {
+        this.y=y;
+    }
+    public int getX() {
+        return x;
+    }
+ 
+    public int getY() {
+        return y;
     }
     public BufferedImage setPicture(String name)
     {

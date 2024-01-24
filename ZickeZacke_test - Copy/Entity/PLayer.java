@@ -13,21 +13,7 @@ public class PLayer extends Entity {
     GamePanel gp;
     int x,y;
     public MapCoordinate[] xy;
-    public void setX(int x)
-    {
-        this.x=x;
-    }
-    public void setY(int y)
-    {
-        this.y=y;
-    }
-    public int getX() {
-        return x;
-    }
- 
-    public int getY() {
-        return y;
-    }
+    
     public void getPlayerPosition(){
         for(int i=0; i<12; i++){
             xy[i] = new MapCoordinate(i,i);
@@ -105,7 +91,7 @@ public class PLayer extends Entity {
         
     }
     public void draw(Graphics2D g2){
-        int num;
+        
         BufferedImage image = null;
         switch (direction) {
             case "normal":
@@ -132,8 +118,8 @@ public class PLayer extends Entity {
             default:
                 break;
         }
-        num=1;
-        g2.drawImage(image, xy[num].getX() , xy[num].getY(), gp.chickensize, gp.chickensize, null);
+        
+        g2.drawImage(image, xy[playerposition].getX() , xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
     
     }
 }

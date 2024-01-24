@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 import Main.GamePanel;
 
-public class FeatherManager {
+public class FeatherManager extends Entity{
     public BufferedImage image;
     public int x, y;
     public BufferedImage feather1, feather2, feather3, feather4, feather5;
@@ -17,6 +17,8 @@ public class FeatherManager {
     GamePanel gp;
     PLayer p1;
     
+    
+    
     public static Feather[] featheranimation1, featheranimation2, featheranimation3, featheranimation4, featheranimation5;
     String[] name = {"bluefeather1","yellowfeather1","whitefeather1","redfeather1",
                      "bluefeather2","yellowfeather2","whitefeather2","redfeather2",
@@ -24,6 +26,7 @@ public class FeatherManager {
                      "bluefeather4","yellowfeather4","whitefeather4","redfeather4"};
     public FeatherManager(GamePanel gp){
         this.gp = gp;
+        xy = new MapCoordinate[24];
         featheranimation1 = new Feather[4];
         featheranimation2 = new Feather[4];
         featheranimation3 = new Feather[4];
@@ -32,6 +35,15 @@ public class FeatherManager {
         setDefaultValue();
         getFeatherImage();
     }
+    public void getFeatherPosition(){
+        for(int i=0; i<12; i++){
+            xy[i] = new MapCoordinate(i,i);
+        }
+        xy[0].setX(100);
+        xy[0].setY(20);
+        xy[1].setX(100+gp.eggwidth+5);
+        xy[1].setY(20);
+    }  
     public void setDefaultValue(){
         x = 200;
         y = 200;
@@ -93,6 +105,7 @@ public class FeatherManager {
         
     }
     public void draw(Graphics2D g2){
+        
         BufferedImage feather1 = null;
         BufferedImage feather2 = null;
         BufferedImage feather3 = null;
@@ -140,10 +153,11 @@ public class FeatherManager {
             default:
                 break;
         }
-        g2.drawImage(feather1, p1.xy[0].getX(), p1.xy[0].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(feather2, 100 , 20, gp.chickensize, gp.chickensize, null);
-        g2.drawImage(feather3, 100 , 20, gp.chickensize, gp.chickensize, null);
-        g2.drawImage(feather4, 100 , 20, gp.chickensize, gp.chickensize, null);
+       
+        g2.drawImage(feather1, xy[playerposition].getX(),xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(feather2, xy[playerposition].getX(),xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(feather3, xy[playerposition].getX(),xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(feather4, xy[playerposition].getX(),xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
         
     
     }

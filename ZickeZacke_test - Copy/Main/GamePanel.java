@@ -10,8 +10,10 @@ import java.util.Random;
 import Main.MouseListen;
 import javax.swing.*;
 
+import Entity.Entity;
 import Entity.FeatherManager;
 import Entity.PLayer;
+import Entity.PlayerPositon;
 import Tile.TileManager;
 import Octagon.Octagon;
 import Octagon.OctagonManager;
@@ -43,7 +45,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
  
 
     int FPS = 50;
-
+    Entity xdd;
     MouseListen mouse;
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
@@ -133,9 +135,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
+        player.getPlayerPosition();
+        featherM.getFeatherPosition();
         featherM.update();
         player.update();
-        player.getPlayerPosition();
+        
     }
    
     public void paintComponent(Graphics g){
