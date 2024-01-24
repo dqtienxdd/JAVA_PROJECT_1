@@ -135,7 +135,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void update(){
         featherM.update();
         player.update();
-        
+        player.getPlayerPosition();
     }
    
     public void paintComponent(Graphics g){

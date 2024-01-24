@@ -15,6 +15,7 @@ public class FeatherManager {
     public int spriteCounter=0;
     public int spriteNum=1;
     GamePanel gp;
+    PLayer p1;
     
     public static Feather[] featheranimation1, featheranimation2, featheranimation3, featheranimation4, featheranimation5;
     String[] name = {"bluefeather1","yellowfeather1","whitefeather1","redfeather1",
@@ -139,7 +140,7 @@ public class FeatherManager {
             default:
                 break;
         }
-        g2.drawImage(feather1, 100 , 20, gp.chickensize, gp.chickensize, null);
+        g2.drawImage(feather1, p1.xy[0].getX(), p1.xy[0].getY(), gp.chickensize, gp.chickensize, null);
         g2.drawImage(feather2, 100 , 20, gp.chickensize, gp.chickensize, null);
         g2.drawImage(feather3, 100 , 20, gp.chickensize, gp.chickensize, null);
         g2.drawImage(feather4, 100 , 20, gp.chickensize, gp.chickensize, null);

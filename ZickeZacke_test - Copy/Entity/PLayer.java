@@ -11,30 +11,58 @@ import javax.imageio.ImageIO;
 
 public class PLayer extends Entity {
     GamePanel gp;
+    int x,y;
+    public MapCoordinate[] xy;
+    public void setX(int x)
+    {
+        this.x=x;
+    }
+    public void setY(int y)
+    {
+        this.y=y;
+    }
+    public int getX() {
+        return x;
+    }
+ 
+    public int getY() {
+        return y;
+    }
+    public void getPlayerPosition(){
+        for(int i=0; i<12; i++){
+            xy[i] = new MapCoordinate(i,i);
+        }
+        xy[0].setX(100);
+        xy[0].setY(20);
+        xy[1].setX(100+gp.eggwidth+5);
+        xy[1].setY(20);
+    }  
     
-
     public PLayer(GamePanel gp ){
         this.gp = gp;
         
+        xy = new MapCoordinate[24];
 
         setDefaultValue();
         getPlayerImage();
     }
     public void setDefaultValue(){
-        x = 200;
-        y = 200;
+        
         direction = "normal";
     }
     public void getPlayerImage(){
         try{
-            chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel.png"));
-            chick2 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel2.png"));
-            chick3 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel3.png"));
-            chick4 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel4.png"));
-            chick5 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/Chicken/chickenpixel3.png"));
+            chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel.png"));
+            chick2 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel2.png"));
+            chick3 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel3.png"));
+            chick4 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel4.png"));
+            chick5 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel3.png"));
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+    public MapCoordinate[] getArray(){
+        return xy;
     }
     public void update(){
         if(gp.gameState == gp.playState){
@@ -77,6 +105,7 @@ public class PLayer extends Entity {
         
     }
     public void draw(Graphics2D g2){
+        int num;
         BufferedImage image = null;
         switch (direction) {
             case "normal":
@@ -103,8 +132,8 @@ public class PLayer extends Entity {
             default:
                 break;
         }
-       
-        g2.drawImage(image, 100 , 20, gp.chickensize, gp.chickensize, null);
+        num=1;
+        g2.drawImage(image, xy[num].getX() , xy[num].getY(), gp.chickensize, gp.chickensize, null);
     
     }
 }

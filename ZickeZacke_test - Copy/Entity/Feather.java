@@ -9,6 +9,7 @@ import Main.GamePanel;
 
 public class Feather {
     GamePanel gp;
+    
     BufferedImage image;
     private int width;
     private int height;
