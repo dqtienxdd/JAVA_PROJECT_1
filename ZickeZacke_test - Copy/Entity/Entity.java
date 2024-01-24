@@ -15,15 +15,22 @@ public class Entity {
     public int x4,y4;
     public int speed;
     public BufferedImage chick1,chick2,chick3,chick4,chick5;
+    public BufferedImage chick6,chick7,chick8,chick9,chick10;
+    public BufferedImage chick11,chick12,chick13,chick14,chick15;
+    public BufferedImage chick16,chick17,chick18,chick19,chick20;
     public BufferedImage feather1, feather2, feather3, feather4, feather5;
     public String direction;
     public int spriteCounter=0;
     public int spriteNum=1;
     public MapCoordinate[] xy;
-    public int playerposition1=23;
-    public int playerposition2=0;
-    public int playerposition3=0;
-    public int playerposition4=0;
+    public int playerposition1=0;
+    public int playerposition2=6;
+    public int playerposition3=12;
+    public int playerposition4=18;
+    public int bluefeathertrack = playerposition1;
+    public int yellowfeathertrack = playerposition2;
+    public int whitefeathertrack = playerposition3;
+    public int redfeathertrack = playerposition4;
     public void setX(int x)
     {
         this.x=x;
@@ -49,5 +56,6 @@ public class Entity {
         }
         return image;
     }
+    
     
 }

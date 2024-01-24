@@ -174,10 +174,10 @@ public class FeatherManager extends Entity{
                 break;
         }
        
-        g2.drawImage(bluefeather, xy[playerposition1].getX(),xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellowfeather, xy[playerposition1].getX(),xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(whitefeather, xy[playerposition1].getX(),xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(redfeather, xy[playerposition1].getX(),xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(bluefeather, xy[bluefeathertrack].getX(),xy[bluefeathertrack].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(yellowfeather, xy[yellowfeathertrack].getX(),xy[yellowfeathertrack].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(whitefeather, xy[whitefeathertrack].getX(),xy[whitefeathertrack].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(redfeather, xy[redfeathertrack].getX(),xy[redfeathertrack].getY(), gp.chickensize, gp.chickensize, null);
         
         
     }
