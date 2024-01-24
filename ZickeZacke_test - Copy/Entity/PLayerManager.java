@@ -82,6 +82,10 @@ public class PLayerManager extends Entity {
             e.printStackTrace();
         }
     }
+    public void playermovement(){
+        playerposition1=(playerposition1+1)%24;
+        bluefeathertrack = playerposition1;
+    }
     public void update(){
         if(gp.gameState == gp.playState){
             direction = "normal";
@@ -91,7 +95,7 @@ public class PLayerManager extends Entity {
         if(gp.gameState == gp.playState){
             spriteCounter++;
         }
-       
+
         if(spriteCounter > 20){
             if(spriteNum == 1){
                 spriteNum=2;

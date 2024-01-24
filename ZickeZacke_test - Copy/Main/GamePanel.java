@@ -144,7 +144,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-
         Graphics2D g2 = (Graphics2D)g;
         //Titlescreen
         if(gameState==titleState){
@@ -224,26 +223,40 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void mouseClicked(MouseEvent e) {
         
     }
+    int dem=0;
     @Override
     
     public void mousePressed(MouseEvent e) {
         
-        selected=12;
+        
         int mx = e.getX();
         int my = e.getY();
+        selected=12;
+        
         if(gameState==playState){
+            dem++;
             count++;      
             flip=true;
-            direction=1;     
+            direction=1;
+               
+
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
                 {
                     selected=oct1.getIndex();
+                    
+                    if(selected == 5){
+                        if(dem%2==1){
+                            player.playermovement();
+                            featherM.playermovement();
+                        }
+                            
+                    }
                 }
                 count++;
             }
-        
+            
         }
     
         if(gameState==titleState){

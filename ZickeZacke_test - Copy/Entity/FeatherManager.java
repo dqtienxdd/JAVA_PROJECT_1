@@ -68,7 +68,10 @@ public class FeatherManager extends Entity{
         
         
     }  
-    
+    public void playermovement(){
+        playerposition1=(playerposition1+1)%24;
+        bluefeathertrack = playerposition1;
+    }
     public void getFeatherImage(){
         try{
             
@@ -85,6 +88,7 @@ public class FeatherManager extends Entity{
         }
     }
     public void update(){
+        
         if(gp.gameState == gp.playState){
             direction = "normal";
         }else{
@@ -124,6 +128,7 @@ public class FeatherManager extends Entity{
         }
         
     }
+    
     public void draw(Graphics2D g2){
         
         bluefeather = null;
