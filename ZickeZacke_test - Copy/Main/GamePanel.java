@@ -12,7 +12,7 @@ import javax.swing.*;
 
 import Entity.Entity;
 import Entity.FeatherManager;
-import Entity.PLayer;
+import Entity.PLayerManager;
 import Entity.PlayerPositon;
 import Tile.TileManager;
 import Octagon.Octagon;
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     FeatherManager featherM = new FeatherManager(this);
     UI ui = new UI(this);
     Thread gameThread;
-    PLayer player = new PLayer(this);
+    PLayerManager player = new PLayerManager(this);
      
     public int getGameState() {
         return this.gameState;

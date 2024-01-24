@@ -14,7 +14,7 @@ public class FeatherManager extends Entity{
     public int spriteCounter=0;
     public int spriteNum=1;
     GamePanel gp;
-    PLayer p1;
+    PLayerManager p1;
     public MapCoordinate[] xy;
     
     
