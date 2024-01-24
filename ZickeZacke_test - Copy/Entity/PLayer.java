@@ -11,18 +11,8 @@ import javax.imageio.ImageIO;
 
 public class PLayer extends Entity {
     GamePanel gp;
-    int x,y;
-    public MapCoordinate[] xy;
     
-    public void getPlayerPosition(){
-        for(int i=0; i<12; i++){
-            xy[i] = new MapCoordinate(i,i);
-        }
-        xy[0].setX(100);
-        xy[0].setY(20);
-        xy[1].setX(100+gp.eggwidth+5);
-        xy[1].setY(20);
-    }  
+    public MapCoordinate[] xy;
     
     public PLayer(GamePanel gp ){
         this.gp = gp;
@@ -33,9 +23,39 @@ public class PLayer extends Entity {
         getPlayerImage();
     }
     public void setDefaultValue(){
-        
+        x = 100;
+        y = 20;
         direction = "normal";
+        for(int i=0; i<24; i++){
+            xy[i] = new MapCoordinate(i,i);
+            
+        }
+        for(int i=0; i<7; i++){
+            xy[i].setX(x);
+            xy[i].setY(y);
+            x += 5 + gp.eggwidth;
+        }
+        for(int i=7; i>=7 &&i<12;i++){
+            xy[i].setX(x);
+            xy[i].setY(y);
+            y += 5 + gp.eggheight;
+        }   
+        for(int i=12; i>=12 && i<19; i++){
+            xy[i].setX(x);
+            xy[i].setY(y);
+            x -= 5 + gp.eggwidth;
+        }
+        for(int i=19; i>=19 &&i<23;i++){
+            xy[i].setX(x);
+            xy[i].setY(y);
+            y -= 5 + gp.eggheight;
+        }  
     }
+        
+    public void getPlayerPosition(){
+        
+        
+    }  
     public void getPlayerImage(){
         try{
             chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel.png"));
@@ -46,9 +66,6 @@ public class PLayer extends Entity {
         }catch(Exception e){
             e.printStackTrace();
         }
-    }
-    public MapCoordinate[] getArray(){
-        return xy;
     }
     public void update(){
         if(gp.gameState == gp.playState){
@@ -119,7 +136,7 @@ public class PLayer extends Entity {
                 break;
         }
         
-        g2.drawImage(image, xy[playerposition].getX() , xy[playerposition].getY(), gp.chickensize, gp.chickensize, null);
-    
+        g2.drawImage(image, xy[playerposition1].getX() , xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
+        
     }
 }
