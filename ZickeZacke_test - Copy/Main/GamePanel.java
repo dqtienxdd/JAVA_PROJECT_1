@@ -168,11 +168,23 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int trackcount = 0;
     int playercheck = currentPlayer;
     public void checkChicken(int currentPlayer){
-        if(players[playercheck].getPosition()+1==players[(playercheck+1)%4].getPosition()||
-           players[playercheck].getPosition()+1==players[(playercheck+2)%4].getPosition()||
-           players[playercheck].getPosition()+1==players[(playercheck+3)%4].getPosition()){
+        
+        if(players[playercheck].getPosition()+1==players[(playercheck+1)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+1)%4;
+            
+            checkChicken(currentPlayer);
+        }
+        if(players[playercheck].getPosition()+1==players[(playercheck+2)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+2)%4;
+            
+            checkChicken(currentPlayer);
+        }
+        if(players[playercheck].getPosition()+1==players[(playercheck+3)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+3)%4;
+            
             checkChicken(currentPlayer);
         }
         
@@ -234,6 +246,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 {
                     selected=oct1.getIndex();
                     checkChicken(currentPlayer);
+                    playercheck = currentPlayer;
                     if(trackcount >= 1){
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+trackcount+1)%24].getName()){
                             players[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount)%24);
