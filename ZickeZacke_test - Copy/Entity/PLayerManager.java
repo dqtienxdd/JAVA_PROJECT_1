@@ -12,15 +12,23 @@ import javax.imageio.ImageIO;
 public class PLayerManager extends Entity {
     GamePanel gp;
     
+    
+  
     public MapCoordinate[] xy;
+    
     
     public PLayerManager(GamePanel gp ){
         this.gp = gp;
         
         xy = new MapCoordinate[24];
-
+        
+        setUpPlayer();
         setDefaultValue();
         getPlayerImage();
+    }
+    public static Player[] getArray()
+    {
+        return players;
     }
     public void setDefaultValue(){
         x = 100;
@@ -50,14 +58,24 @@ public class PLayerManager extends Entity {
             xy[i].setY(y);
             y -= 5 + gp.eggheight;
         }  
+        
+    }
+    public void setUpPlayer()
+    {
+        players = new Player[4];
+        players[0]= new Player("duydinh", 0);
+        players[1]= new Player("duydinh1", 6);
+        players[2]= new Player("duydinh2", 12);
+        players[3]= new Player("duydinh3", 18);
+        //System.out.println(players[0].getName());
     }
         
     public void getPlayerPosition(){
         
-        
     }  
     public void getPlayerImage(){
         try{
+            
             chick1 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel.png"));
             chick2 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel2.png"));
             chick3 = ImageIO.read(getClass().getResourceAsStream("/res/chicken animation deluxe/BlueChicken/chickenpixel3.png"));
@@ -82,9 +100,9 @@ public class PLayerManager extends Entity {
             e.printStackTrace();
         }
     }
-    public void playermovement(){
-        playerposition1=(playerposition1+1)%24;
-        bluefeathertrack = playerposition1;
+    public void playermovement(int currentPlayer){
+        players[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+        
     }
     public void update(){
         if(gp.gameState == gp.playState){
@@ -174,10 +192,11 @@ public class PLayerManager extends Entity {
                 break;
         }
         
-        g2.drawImage(blue, xy[playerposition1].getX() , xy[playerposition1].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellow, xy[playerposition2].getX() , xy[playerposition2].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(white, xy[playerposition3].getX() , xy[playerposition3].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(red, xy[playerposition4].getX() , xy[playerposition4].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        //System.out.println(players[0].getPosition());
+        g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(white, xy[players[2].getPosition()].getX() , xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(red, xy[players[3].getPosition()].getX() , xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
         
     }
 }

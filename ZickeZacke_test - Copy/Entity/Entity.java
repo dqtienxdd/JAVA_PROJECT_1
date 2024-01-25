@@ -31,6 +31,12 @@ public class Entity {
     public int yellowfeathertrack = playerposition2;
     public int whitefeathertrack = playerposition3;
     public int redfeathertrack = playerposition4;
+    
+
+    //list of players
+    public static Player[] players;
+
+
     public void setX(int x)
     {
         this.x=x;

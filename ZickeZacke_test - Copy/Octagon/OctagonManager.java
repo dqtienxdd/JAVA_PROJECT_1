@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import Entity.Player;
 import Main.GamePanel;
 public class OctagonManager {
     GamePanel gp;

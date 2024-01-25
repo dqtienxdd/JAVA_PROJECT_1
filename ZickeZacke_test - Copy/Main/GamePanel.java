@@ -13,7 +13,9 @@ import javax.swing.*;
 import Entity.Entity;
 import Entity.FeatherManager;
 import Entity.PLayerManager;
+import Entity.Player;
 import Entity.PlayerPositon;
+import Tile.Tile;
 import Tile.TileManager;
 import Octagon.Octagon;
 import Octagon.OctagonManager;
@@ -53,6 +55,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     UI ui = new UI(this);
     Thread gameThread;
     PLayerManager player = new PLayerManager(this);
+    int currentPlayer = 0;
      
     public int getGameState() {
         return this.gameState;
@@ -162,6 +165,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     int direction =1;
     Octagon[] octagons = OctagonManager.getArray();
+    Tile[] egg = TileManager.getArray();
+    Player[] players = PLayerManager.getArray();
     
     
     public void actionPerformed(ActionEvent e) {
@@ -239,19 +244,24 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             flip=true;
             direction=1;
                
-
+            
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
                 {
                     selected=oct1.getIndex();
                     
-                    if(selected == 5){
+                    if(octagons[selected].getName()==egg[players[currentPlayer].getPosition()+1].getName()){
                         if(dem%2==1){
-                            player.playermovement();
-                            featherM.playermovement();
+                            player.playermovement(currentPlayer);
+                            System.out.println(currentPlayer);
                         }
-                            
+                    }
+                    else{
+                        if(dem%2==1){
+                        currentPlayer=(currentPlayer+1)%4;
+                        System.out.println(currentPlayer);
+                        }
                     }
                 }
                 count++;

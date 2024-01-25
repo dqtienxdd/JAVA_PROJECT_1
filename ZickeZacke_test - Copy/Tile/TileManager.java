@@ -16,7 +16,7 @@ public class TileManager {
     Tile[] tile;
     int mapTileNum [] [];
     
-    Tile[] egg;
+    public static Tile[] egg;
     public static void shuffleArray(Tile[] array) {
         Random random = new Random();
         int n = array.length;
@@ -153,6 +153,9 @@ public class TileManager {
         }
     }
         
+    public static Tile[] getArray(){
+        return egg;
+    }
     public void draw(Graphics2D g2){
         int col = 0;
         int row = 0;

@@ -79,7 +79,7 @@ public class Tile {
     {
         return image;
     }
-  
+    
     public boolean collision = false;
 
 }

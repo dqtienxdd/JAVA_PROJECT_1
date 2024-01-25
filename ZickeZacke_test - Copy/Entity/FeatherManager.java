@@ -68,10 +68,7 @@ public class FeatherManager extends Entity{
         
         
     }  
-    public void playermovement(){
-        playerposition1=(playerposition1+1)%24;
-        bluefeathertrack = playerposition1;
-    }
+    
     public void getFeatherImage(){
         try{
             
@@ -179,10 +176,10 @@ public class FeatherManager extends Entity{
                 break;
         }
        
-        g2.drawImage(bluefeather, xy[bluefeathertrack].getX(),xy[bluefeathertrack].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellowfeather, xy[yellowfeathertrack].getX(),xy[yellowfeathertrack].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(whitefeather, xy[whitefeathertrack].getX(),xy[whitefeathertrack].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(redfeather, xy[redfeathertrack].getX(),xy[redfeathertrack].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(bluefeather, xy[players[0].getPosition()].getX(),xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(yellowfeather, xy[players[1].getPosition()].getX(),xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(whitefeather, xy[players[2].getPosition()].getX(),xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(redfeather, xy[players[3].getPosition()].getX(),xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
         
         
     }
