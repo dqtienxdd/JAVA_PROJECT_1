@@ -31,8 +31,8 @@ public class PLayerManager extends Entity {
         return players;
     }
     public void setDefaultValue(){
-        x = 100;
-        y = 20;
+        x = 120;
+        y = 37;
         direction = "normal";
         for(int i=0; i<24; i++){
             xy[i] = new MapCoordinate(i,i);

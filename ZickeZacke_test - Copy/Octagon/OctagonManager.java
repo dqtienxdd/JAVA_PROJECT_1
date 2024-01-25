@@ -88,7 +88,7 @@ public class OctagonManager {
 
             // backside2 = new Octagon();
             // backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside2.png"));
-            shuffleArray(name);
+            //shuffleArray(name);
             
             for(int i=0; i<12; i++)
             {

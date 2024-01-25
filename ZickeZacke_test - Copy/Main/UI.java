@@ -80,7 +80,7 @@ public class UI {
         int height = gp.tileSize*2;
         int Xbox = getXforCenteredText(text)-gp.tileSize*3;
         int Ybox = gp.tileSize*6;
-        drawSubWindow(261, 303,width,height);
+        drawSubWindow(286, 303,width,height);
         //Menu
         
 

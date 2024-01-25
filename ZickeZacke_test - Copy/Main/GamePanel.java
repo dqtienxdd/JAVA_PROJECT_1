@@ -23,8 +23,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     final int originalTilesize = 16;
     final int scale = 3;
     public final int tileSize = originalTilesize*scale;
-    public final int maxScreenCol= 16;
-    public final int maxScreenRow= 12;
+    public final int maxScreenCol= 17;
+    public final int maxScreenRow= 13;
     public final int screenWidth = tileSize*maxScreenCol; //768
     public final int screenHeight = tileSize*maxScreenRow; //576
     public final int eggwidth = 63;
@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int octagonSize = 70;
     public final int octagonHeight = 70;
     public final int octagonWidth = 70;
-    public final int chickensize = 90;
+    public final int chickensize = 100;
     public boolean flip=false;
     public int selected;
     public int count=0;
@@ -130,7 +130,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 drawCount++;
             }
             if(timer>=1000000000){
-                System.out.println("FPS: " + drawCount);
+                // System.out.println("FPS: " + drawCount);
                 drawCount = 0;
                 timer = 0;
             }
@@ -251,17 +251,17 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 {
                     selected=oct1.getIndex();
                     
-                    if(octagons[selected].getName()==egg[players[currentPlayer].getPosition()+1].getName()){
+                    if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
                         if(dem%2==1){
                             player.playermovement(currentPlayer);
-                            System.out.println(currentPlayer);
+                            System.out.println("Player "+currentPlayer+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
                         }
                     }
                     else{
                         if(dem%2==1){
                         currentPlayer=(currentPlayer+1)%4;
-                        System.out.println(currentPlayer);
+                        System.out.println("Player "+currentPlayer+" turn");
                         }
                     }
                 }
