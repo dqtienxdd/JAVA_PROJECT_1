@@ -63,10 +63,10 @@ public class PLayerManager extends Entity {
     public void setUpPlayer()
     {
         players = new Player[4];
-        players[0]= new Player("duydinh", 23, 0);
-        players[1]= new Player("duydinh1", 0, 1);
-        players[2]= new Player("duydinh2", 1, 2);
-        players[3]= new Player("duydinh3", 2, 3);
+        players[0]= new Player("duydinh", 0);
+        players[1]= new Player("duydinh1", 6);
+        players[2]= new Player("duydinh2", 12);
+        players[3]= new Player("duydinh3", 18);
         //System.out.println(players[0].getName());
     }
          
