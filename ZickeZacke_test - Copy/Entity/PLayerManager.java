@@ -102,6 +102,7 @@ public class PLayerManager extends Entity {
     }
     public void playermovement(int currentPlayer){
         players[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+        //System.out.println(players[currentPlayer].getPosition());
         
     }
     public void update(){

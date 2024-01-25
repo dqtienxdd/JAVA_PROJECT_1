@@ -255,6 +255,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         if(dem%2==1){
                             player.playermovement(currentPlayer);
                             System.out.println(currentPlayer);
+                            //System.out.println(players[currentPlayer].getPosition());
                         }
                     }
                     else{
