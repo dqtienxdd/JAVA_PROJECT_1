@@ -127,7 +127,10 @@ public class FeatherManager extends Entity{
     }
     
     public void draw(Graphics2D g2){
-        
+        bluefeathertrack = players[0].getPosition();
+        yellowfeathertrack = players[1].getPosition();
+        whitefeathertrack = players[2].getPosition();
+        redfeathertrack = players[3].getPosition();
         bluefeather = null;
         yellowfeather = null;
         whitefeather = null;
@@ -176,10 +179,10 @@ public class FeatherManager extends Entity{
                 break;
         }
        
-        g2.drawImage(bluefeather, xy[players[0].getPosition()].getX(),xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellowfeather, xy[players[1].getPosition()].getX(),xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(whitefeather, xy[players[2].getPosition()].getX(),xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(redfeather, xy[players[3].getPosition()].getX(),xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(bluefeather, xy[bluefeathertrack].getX(),xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(yellowfeather, xy[yellowfeathertrack].getX(),xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(whitefeather, xy[whitefeathertrack].getX(),xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(redfeather, xy[redfeathertrack].getX(),xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
         
         
     }
