@@ -96,41 +96,41 @@ public class OctagonManager {
             }
             octagons[12] = new Octagon("worm", 12);
             
-            octagons[0].setX(300);
-            octagons[0].setY(140);
+            octagons[0].setX(300 + 48/2);
+            octagons[0].setY(140 + 48/2);
 
-            octagons[1].setX(396);
-            octagons[1].setY(140);
+            octagons[1].setX(396 + 48/2);
+            octagons[1].setY(140 + 48/2);
 
-            octagons[2].setX(300);
-            octagons[2].setY(215);
+            octagons[2].setX(300 + 48/2);
+            octagons[2].setY(215 + 48/2);
 
-            octagons[3].setX(396);
-            octagons[3].setY(215);
+            octagons[3].setX(396 + 48/2);
+            octagons[3].setY(215 + 48/2);
 
-            octagons[4].setX(300);
-            octagons[4].setY(290);
+            octagons[4].setX(300 + 48/2);
+            octagons[4].setY(290 + 48/2);
 
-            octagons[5].setX(396);
-            octagons[5].setY(290);
+            octagons[5].setX(396 + 48/2);
+            octagons[5].setY(290 + 48/2);
 
-            octagons[6].setX(300);
-            octagons[6].setY(365);
+            octagons[6].setX(300 + 48/2);
+            octagons[6].setY(365 + 48/2);
 
-            octagons[7].setX(396);
-            octagons[7].setY(365);
+            octagons[7].setX(396 + 48/2);
+            octagons[7].setY(365 + 48/2);
 
-            octagons[8].setX(204);
-            octagons[8].setY(215);
+            octagons[8].setX(204 + 48/2);
+            octagons[8].setY(215 + 48/2);
 
-            octagons[9].setX(492);
-            octagons[9].setY(215);
+            octagons[9].setX(492 + 48/2);
+            octagons[9].setY(215 + 48/2);
 
-            octagons[10].setX(204);
-            octagons[10].setY(290);
+            octagons[10].setX(204 + 48/2);
+            octagons[10].setY(290 + 48/2);
 
-            octagons[11].setX(492);
-            octagons[11].setY(290);
+            octagons[11].setX(492 + 48/2);
+            octagons[11].setY(290 + 48/2);
             
 
         } catch (Exception e) {

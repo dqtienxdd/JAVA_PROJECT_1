@@ -188,8 +188,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             checkChicken(currentPlayer);
         }
         
-        
-        
+    
         System.out.println(trackcount);
         
     }
