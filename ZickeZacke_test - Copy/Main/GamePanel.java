@@ -169,19 +169,19 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int playercheck = currentPlayer;
     public void checkChicken(int currentPlayer){
         
-        if(players[playercheck].getPosition()+1==players[(playercheck+1)%4].getPosition()){
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+1)%4;
             
             checkChicken(currentPlayer);
         }
-        if(players[playercheck].getPosition()+1==players[(playercheck+2)%4].getPosition()){
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+2)%4;
             
             checkChicken(currentPlayer);
         }
-        if(players[playercheck].getPosition()+1==players[(playercheck+3)%4].getPosition()){
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+3)%4;
             
