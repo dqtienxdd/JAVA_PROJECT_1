@@ -55,7 +55,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     UI ui = new UI(this);
     Thread gameThread;
     PLayerManager player = new PLayerManager(this);
-    int currentPlayer = 0;
+    public int currentPlayer = 0;
      
     public int getGameState() {
         return this.gameState;
@@ -138,11 +138,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
-        player.getPlayerPosition();
-        featherM.getFeatherPosition();
+        
+        
         featherM.update();
         player.update();
-        
+        checkChicken(currentPlayer);
     }
    
     public void paintComponent(Graphics g){
@@ -167,57 +167,35 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     Octagon[] octagons = OctagonManager.getArray();
     Tile[] egg = TileManager.getArray();
     Player[] players = PLayerManager.getArray();
-    
-    
+    int trackcount = 0;
+    int playercheck = currentPlayer;
+    public void checkChicken(int currentPlayer){
+        
+        if(players[currentPlayer].getPosition()+1==players[(currentPlayer+1)%4].getPosition()){
+            trackcount=1;
+        }
+        playercheck = currentPlayer+1;
+    }
     public void actionPerformed(ActionEvent e) {
         if(gameState==playState)
         {
                 if(flip)
             {
                 flip=octagons[selected].flip();
-                if(octagons[selected].getWidth() <=0)
-            {
-                if(octagons[selected].getIsBackSide()==true)
+                    if(octagons[selected].getWidth() <=0)
                 {
-                    octagons[selected].setPicture(octagons[selected].getName()); 
+                    if(octagons[selected].getIsBackSide()==true)
+                    {
+                        octagons[selected].setPicture(octagons[selected].getName()); 
+                    }
+                    else{
+                        octagons[selected].setPicture("backside");
+                    }
                 }
-                else{
-                    octagons[selected].setPicture("backside");
-                }
-            }
-            //System.out.println(octagons[selected].getIsBackSide());
-            
             }  
+        }
             
-            // else{
-            //     octagons[selected].setPicture(octagons[selected].getName());
-            //     System.out.println(octagons[selected].getWidth());
-            // }
-            // octagons[selected].setIsBackSide(false);
-            // selected=12;
-            }
-            
-            
-        
-        // else
-        // {
-        //     if(flip){
-        //     flip=octagons[selected].flip();
-        //     if(octagons[selected].getWidth() <=0)
-        //     {
-        //         octagons[selected].setPicture("backside");
-        //         System.out.println(octagons[selected].getWidth());
-        //     }
-        //     }
-        //     selected=12;
-        //     // else
-        //     // {
-        //     //     octagons[selected].setPicture("backside");
-        //     //     System.out.println(octagons[selected].getWidth());
-        //     //     octagons[selected].setIsBackSide(true);
-        //     //     selected=12;
-        //     // }
-        // }
+                 
        
        repaint();
         }
@@ -250,20 +228,44 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(oct1.collision(e.getX(), e.getY()))
                 {
                     selected=oct1.getIndex();
+                    if(trackcount == 1){
+                        if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+2)%24].getName()){
+                            players[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+                            
+                            if(dem%2==1){
+                                player.playermovement(currentPlayer);
+                                System.out.println("Player "+currentPlayer+" turn");
+                                //System.out.println(players[currentPlayer].getPosition());
+                            }
+                        }
+                        
+                            else{
+                                if(dem%2==1){
+                                currentPlayer=(currentPlayer+1)%4;
+                                System.out.println("Player "+currentPlayer+" turn");
+                                }
+                            }
+                            
+                    }
                     
-                    if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
+                    if(trackcount==0){
+                        if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
+                        
                         if(dem%2==1){
                             player.playermovement(currentPlayer);
                             System.out.println("Player "+currentPlayer+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
                         }
                     }
-                    else{
-                        if(dem%2==1){
-                        currentPlayer=(currentPlayer+1)%4;
-                        System.out.println("Player "+currentPlayer+" turn");
+                        else{
+                            if(dem%2==1){
+                            currentPlayer=(currentPlayer+1)%4;
+                            System.out.println("Player "+currentPlayer+" turn");
+                            }
                         }
                     }
+                    trackcount=0;
+                    
                 }
                 count++;
             }
