@@ -64,9 +64,9 @@ public class PLayerManager extends Entity {
     {
         players = new Player[4];
         players[0]= new Player("duydinh", 0);
-        players[1]= new Player("duydinh1", 1);
-        players[2]= new Player("duydinh2", 12);
-        players[3]= new Player("duydinh3", 18);
+        players[1]= new Player("duydinh1", 3);
+        players[2]= new Player("duydinh2", 2);
+        players[3]= new Player("duydinh3", 1);
         //System.out.println(players[0].getName());
     }
          

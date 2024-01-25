@@ -138,11 +138,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
-        
-        
         featherM.update();
         player.update();
-        checkChicken(currentPlayer);
+        
     }
    
     public void paintComponent(Graphics g){
@@ -170,11 +168,18 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int trackcount = 0;
     int playercheck = currentPlayer;
     public void checkChicken(int currentPlayer){
-        
-        if(players[currentPlayer].getPosition()+1==players[(currentPlayer+1)%4].getPosition()){
-            trackcount=1;
+        if(players[playercheck].getPosition()+1==players[(playercheck+1)%4].getPosition()||
+           players[playercheck].getPosition()+1==players[(playercheck+2)%4].getPosition()||
+           players[playercheck].getPosition()+1==players[(playercheck+3)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+1)%4;
+            checkChicken(currentPlayer);
         }
-        playercheck = currentPlayer+1;
+        
+        
+        
+        System.out.println(trackcount);
+        
     }
     public void actionPerformed(ActionEvent e) {
         if(gameState==playState)
@@ -228,9 +233,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(oct1.collision(e.getX(), e.getY()))
                 {
                     selected=oct1.getIndex();
-                    if(trackcount == 1){
-                        if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+2)%24].getName()){
-                            players[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+                    checkChicken(currentPlayer);
+                    if(trackcount >= 1){
+                        if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+trackcount+1)%24].getName()){
+                            players[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount)%24);
                             
                             if(dem%2==1){
                                 player.playermovement(currentPlayer);
