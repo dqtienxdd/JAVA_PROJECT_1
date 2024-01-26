@@ -175,7 +175,32 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int feather2;
     int feather3;
     public void checkChicken(int currentPlayer){
-        
+        //playercheck = currentPlayer;
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+1)%4;
+            //fraudChicken = playercheck;
+            
+            checkChicken(currentPlayer);
+        }
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+2)%4;
+            //fraudChicken = playercheck;
+            
+            checkChicken(currentPlayer);
+        }
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+3)%4;
+            //fraudChicken = playercheck;
+            
+            checkChicken(currentPlayer);
+        }
+        System.out.println(trackcount);
+    }
+    public void checkFeather(int currentPlayer){
+        //playercheck = currentPlayer;
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+1)%4;
@@ -183,7 +208,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(dem%2==1){
                 takeFeather(currentPlayer, fraudChicken);
             }
-            checkChicken(currentPlayer);
+            checkFeather(currentPlayer);
         }
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%4].getPosition()){
             trackcount+=1;
@@ -192,7 +217,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(dem%2==1){
                 takeFeather(currentPlayer, fraudChicken);
             }
-            checkChicken(currentPlayer);
+            checkFeather(currentPlayer);
         }
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
             trackcount+=1;
@@ -201,7 +226,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(dem%2==1){
                 takeFeather(currentPlayer, fraudChicken);
             }
-            checkChicken(currentPlayer);
+            checkFeather(currentPlayer);
         }
         System.out.println(trackcount);
     }
@@ -272,8 +297,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     playercheck = currentPlayer;
                     if(trackcount >= 1){
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+trackcount+1)%24].getName()){
-                            
-                            
+                            trackcount = 0;
+                            checkFeather(currentPlayer);
                             if(dem%2==1){
                                 feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                 drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
@@ -300,8 +325,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
                         
                         if(dem%2==1){
-                            // feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
-                            // drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+                            feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+                            drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
                             player.playermovement(currentPlayer);
                             featherM.Feathermovement(currentPlayer);
                             System.out.println("Player "+currentPlayer+" turn");
