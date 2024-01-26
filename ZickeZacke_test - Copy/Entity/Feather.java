@@ -14,14 +14,28 @@ public class Feather {
     private int width;
     private int height;
     private String name;
-    private int index;
-    public Feather(String name, int index)
+    public int position;
+    public int index;
+    
+    public Feather(String name, int position, int index)
     {
         width = 90;
         height = 90;
         this.name=name;
+        this.position=position;
         this.index=index;
-        
+    }
+    public int getIndex() {
+        return index;
+    }
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    public int getPosition() {
+        return position;
+    }
+    public void setPosition(int position) {
+        this.position = position;
     }
     public void setX(int x)
     {

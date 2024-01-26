@@ -27,16 +27,16 @@ public class Entity {
     public int playerposition2=6;
     public int playerposition3=12;
     public int playerposition4=18;
-    public int bluefeathertrack;
-    public int yellowfeathertrack;
-    public int whitefeathertrack;
-    public int redfeathertrack;
+    public int bluefeathertrack=0;
+    public int yellowfeathertrack=1;
+    public int whitefeathertrack=2;
+    public int redfeathertrack=18;
     
-
+    
     //list of players
     public static Player[] players;
-
-
+    public static Feather[] feathers;
+    
     public void setX(int x)
     {
         this.x=x;

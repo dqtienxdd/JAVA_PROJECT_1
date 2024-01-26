@@ -11,6 +11,7 @@ import Main.MouseListen;
 import javax.swing.*;
 
 import Entity.Entity;
+import Entity.Feather;
 import Entity.FeatherManager;
 import Entity.PLayerManager;
 import Entity.Player;
@@ -56,7 +57,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     Thread gameThread;
     PLayerManager player = new PLayerManager(this);
     public int currentPlayer = 0;
-     
+    public int fraudChicken = 0;
     public int getGameState() {
         return this.gameState;
     }
@@ -140,7 +141,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void update(){
         featherM.update();
         player.update();
-        
+        System.out.println(fraudChicken);
     }
    
     public void paintComponent(Graphics g){
@@ -165,6 +166,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     Octagon[] octagons = OctagonManager.getArray();
     Tile[] egg = TileManager.getArray();
     Player[] players = PLayerManager.getArray();
+    Feather[] feathers = FeatherManager.getArray();
     int trackcount = 0;
     int playercheck = currentPlayer;
     public void checkChicken(int currentPlayer){
@@ -172,25 +174,30 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+1)%4;
-            
+            fraudChicken = playercheck;
+            takeFeather(currentPlayer, fraudChicken);
             checkChicken(currentPlayer);
         }
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+2)%4;
-            
+            fraudChicken = playercheck;
+            takeFeather(currentPlayer, fraudChicken);
             checkChicken(currentPlayer);
         }
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+3)%4;
-            
+            fraudChicken = playercheck;
+            takeFeather(currentPlayer, fraudChicken);
             checkChicken(currentPlayer);
         }
-        
-    
         System.out.println(trackcount);
-        
+    }
+    public Feather temp;
+    public void takeFeather(int currentPlayer, int fraudChicken) {
+       temp = feathers[currentPlayer];
+       feathers[fraudChicken]= temp;
     }
     public void actionPerformed(ActionEvent e) {
         if(gameState==playState)
@@ -227,14 +234,13 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     
     public void mousePressed(MouseEvent e) {
         
-        
         int mx = e.getX();
         int my = e.getY();
         selected=12;
         
         if(gameState==playState){
             dem++;
-            count++;      
+               
             flip=true;
             direction=1;
                
@@ -252,6 +258,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             
                             if(dem%2==1){
                                 player.playermovement(currentPlayer);
+                                featherM.Feathermovement(feathers[currentPlayer].getPosition(), currentPlayer);
+                                
                                 System.out.println("Player "+currentPlayer+" turn");
                                 //System.out.println(players[currentPlayer].getPosition());
                             }
@@ -271,6 +279,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                         if(dem%2==1){
                             player.playermovement(currentPlayer);
+                            featherM.Feathermovement(feathers[currentPlayer].getPosition(), currentPlayer);
                             System.out.println("Player "+currentPlayer+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
                         }
@@ -285,7 +294,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     trackcount=0;
                     
                 }
-                count++;
+                
             }
             
         }
