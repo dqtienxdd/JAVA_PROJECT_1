@@ -34,6 +34,7 @@ public class FeatherManager extends Entity{
         featheranimation4 = new Feather[4];
         featheranimation5 = new Feather[4];
         setUpFeather();
+        setUpDraw();
         setDefaultValue();
         getFeatherImage();
     }
@@ -70,6 +71,10 @@ public class FeatherManager extends Entity{
     {
         return feathers;
     }
+    public static Feather[] getDrawArray()
+    {
+        return drawfeathers;
+    }
     public void setUpFeather()
     {
         feathers = new Feather[4];
@@ -79,7 +84,15 @@ public class FeatherManager extends Entity{
         feathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
         //System.out.println(players[0].getName());
     }
-    
+    public void setUpDraw()
+    {
+        drawfeathers = new Feather[4];
+        drawfeathers[0]= new Feather("xdd", bluefeathertrack, bluefeathertrack); 
+        drawfeathers[1]= new Feather("xdd", yellowfeathertrack, yellowfeathertrack);
+        drawfeathers[2]= new Feather("xdd", whitefeathertrack, whitefeathertrack);
+        drawfeathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
+        //System.out.println(players[0].getName());
+    }
     public void getFeatherImage(){
         try{
             
@@ -142,19 +155,23 @@ public class FeatherManager extends Entity{
         whitefeathertrack = players[2].getPosition();
         redfeathertrack = players[3].getPosition();
     }
-    public void Feathermovement(int feather, int currentPlayer){
+    public void Feathermovement(int currentPlayer){
         
         if(feathers[0].getIndex()==currentPlayer){
-            feathers[0].setPosition(players[currentPlayer].getPosition());
+            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
         if(feathers[1].getIndex()==currentPlayer){
-            feathers[1].setPosition(players[currentPlayer].getPosition());
+            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
         if(feathers[2].getIndex()==currentPlayer){
-            feathers[2].setPosition(players[currentPlayer].getPosition());
+            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
         if(feathers[3].getIndex()==currentPlayer){
-            feathers[3].setPosition(players[currentPlayer].getPosition());
+            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }   
     }
     public void draw(Graphics2D g2){
