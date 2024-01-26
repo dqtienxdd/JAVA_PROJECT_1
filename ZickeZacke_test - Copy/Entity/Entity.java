@@ -30,7 +30,7 @@ public class Entity {
     public int bluefeathertrack=1;
     public int yellowfeathertrack=0;
     public int whitefeathertrack=3;
-    public int redfeathertrack=2;
+    public int redfeathertrack=18;
     
     
     //list of players

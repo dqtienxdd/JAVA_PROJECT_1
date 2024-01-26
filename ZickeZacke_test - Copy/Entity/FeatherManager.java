@@ -157,19 +157,19 @@ public class FeatherManager extends Entity{
     }
     public void Feathermovement(int currentPlayer){
         
-        if(feathers[0].getIndex()==currentPlayer){
+        if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
             feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
             drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
-        if(feathers[1].getIndex()==currentPlayer){
+        if(feathers[1].getIndex()==players[currentPlayer].getPosition()){
             feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
             drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
-        if(feathers[2].getIndex()==currentPlayer){
+        if(feathers[2].getIndex()==players[currentPlayer].getPosition()){
             feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
             drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }
-        if(feathers[3].getIndex()==currentPlayer){
+        if(feathers[3].getIndex()==players[currentPlayer].getPosition()){
             feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
             drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
         }   
