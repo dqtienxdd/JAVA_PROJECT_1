@@ -175,6 +175,7 @@ public class UI {
         g2.setStroke(new BasicStroke(3));
         g2.drawRoundRect(x+3, y+3, width-6, height-6, 29, 29);
     }
+    
     public int getXforCenteredText(String text){
         int length = (int)g2.getFontMetrics().getStringBounds(text,g2).getWidth();
         int x = gp.screenWidth/2 - length/2;

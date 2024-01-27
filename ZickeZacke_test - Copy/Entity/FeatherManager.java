@@ -156,7 +156,6 @@ public class FeatherManager extends Entity{
         redfeathertrack = players[3].getPosition();
     }
     public void Feathermovement(int currentPlayer){
-        
         if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
             feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
             drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
