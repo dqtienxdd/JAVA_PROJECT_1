@@ -17,7 +17,6 @@ public class FeatherManager extends Entity{
     PLayerManager p1;
     public MapCoordinate[] xy;
     
-    
     public static Feather[] featheranimation1, featheranimation2, featheranimation3, featheranimation4, featheranimation5;
     String[] name = {"bluefeather1","yellowfeather1","whitefeather1","redfeather1",
                      "bluefeather2","yellowfeather2","whitefeather2","redfeather2",
@@ -38,6 +37,7 @@ public class FeatherManager extends Entity{
         setDefaultValue();
         getFeatherImage();
     }
+    
     public void setDefaultValue(){
         x = 120;
         y = 37;
@@ -222,11 +222,11 @@ public class FeatherManager extends Entity{
             default:
                 break;
         }
-       
-        g2.drawImage(bluefeather, xy[feathers[0].getPosition()].getX(),xy[feathers[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellowfeather, xy[feathers[1].getPosition()].getX(),xy[feathers[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(whitefeather, xy[feathers[2].getPosition()].getX(),xy[feathers[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(redfeather, xy[feathers[3].getPosition()].getX(),xy[feathers[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        
+        g2.drawImage(bluefeather, xy[(feathers[0].getPosition())%24].getX(),xy[(feathers[0].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(yellowfeather, xy[(feathers[1].getPosition())%24].getX(),xy[(feathers[1].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(whitefeather, xy[(feathers[2].getPosition())%24].getX(),xy[(feathers[2].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+        g2.drawImage(redfeather, xy[(feathers[3].getPosition())%24].getX(),xy[(feathers[3].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
         
         
     }

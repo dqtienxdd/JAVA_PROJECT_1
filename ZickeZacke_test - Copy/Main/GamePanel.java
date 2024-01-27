@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Arrays;
 import java.util.Random;
 
 import Main.MouseListen;
@@ -142,7 +143,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         featherM.update();
         player.update();
         
-        
     }
    
     public void paintComponent(Graphics g){
@@ -169,6 +169,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     Player[] players = PLayerManager.getArray();
     Feather[] feathers = FeatherManager.getArray();
     Feather[] drawFeathers = FeatherManager.getDrawArray();
+    
     int trackcount = 0;
     int playercheck = currentPlayer;
     int feather1;
@@ -235,10 +236,25 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public int feathercheck;
     public void takeFeather(int currentPlayer, int fraudChicken) {
         feathercheck = players[fraudChicken].getIndex();
-        System.out.println("player"+fraudChicken+": "+feathercheck);
         if(feathercheck!=0){
-            feathers[fraudChicken]= drawFeathers[currentPlayer];
-            feathers[currentPlayer] = feathers[fraudChicken];
+            if(players[fraudChicken].getIndex()==1){
+                feathers[fraudChicken]= drawFeathers[currentPlayer];
+            }
+            if(players[fraudChicken].getIndex()>=1){
+                if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
+                    feathers[fraudChicken]= drawFeathers[currentPlayer];
+                }
+                if(feathers[(fraudChicken+1)%4].getPosition()==players[fraudChicken].getPosition()){
+                    feathers[(fraudChicken+1)%4]= drawFeathers[currentPlayer];
+                }
+                if(feathers[(fraudChicken+2)%4].getPosition()==players[fraudChicken].getPosition()){
+                    feathers[(fraudChicken+2)%4]= drawFeathers[currentPlayer];
+                }
+                if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
+                    feathers[(fraudChicken+3)%4]= drawFeathers[currentPlayer];
+                }
+            }
+            
             players[currentPlayer].setIndex(players[currentPlayer].getIndex()+players[fraudChicken].getIndex());
             players[fraudChicken].setIndex(players[fraudChicken].getIndex()-players[fraudChicken].getIndex());
             
@@ -322,14 +338,14 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                                 
                                 System.out.println("Player "+currentPlayer+" turn");
                                 //System.out.println(players[currentPlayer].getPosition());
-                            }
+                            }else dem=0;
                         }
                         
                             else{
                                 if(dem%2==1){
                                 currentPlayer=(currentPlayer+1)%4;
                                 System.out.println("Player "+currentPlayer+" turn");
-                                }
+                                }else dem=0;
                             }
                             
                     }
@@ -347,13 +363,13 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             featherM.Feathermovement(currentPlayer);
                             System.out.println("Player "+currentPlayer+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
-                        }
+                        }else dem=0;
                     }
                         else{
                             if(dem%2==1){
                             currentPlayer=(currentPlayer+1)%4;
                             System.out.println("Player "+currentPlayer+" turn");
-                            }
+                            }else dem=0;
                         }
                     }
                     trackcount=0;

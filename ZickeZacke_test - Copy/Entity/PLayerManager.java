@@ -4,6 +4,7 @@ import Main.GamePanel;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -63,9 +64,9 @@ public class PLayerManager extends Entity {
     public void setUpPlayer()
     {
         players = new Player[4];
-        players[0]= new Player("duydinh", 1, 1);
-        players[1]= new Player("duydinh1", 0, 1);
-        players[2]= new Player("duydinh2", 3, 1);
+        players[0]= new Player("duydinh", 0, 1);
+        players[1]= new Player("duydinh1", 6, 1);
+        players[2]= new Player("duydinh2", 12, 1);
         players[3]= new Player("duydinh3", 18, 1);
         //System.out.println(players[0].getName());
     }
@@ -190,12 +191,12 @@ public class PLayerManager extends Entity {
             default:
                 break;
         }
-        
+        int[] array = {(players[0].getPosition())%24,(players[1].getPosition())%24,(players[2].getPosition())%24,(players[3].getPosition())%24};
+        Arrays.sort(array);
         g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        //System.out.println(players[0].getPosition());
         g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
         g2.drawImage(white, xy[players[2].getPosition()].getX() , xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
         g2.drawImage(red, xy[players[3].getPosition()].getX() , xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        
+
     }
 }

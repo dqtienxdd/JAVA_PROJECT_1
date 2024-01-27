@@ -27,9 +27,9 @@ public class Entity {
     public int playerposition2=6;
     public int playerposition3=12;
     public int playerposition4=18;
-    public int bluefeathertrack=1;
-    public int yellowfeathertrack=0;
-    public int whitefeathertrack=3;
+    public int bluefeathertrack=0;
+    public int yellowfeathertrack=6;
+    public int whitefeathertrack=12;
     public int redfeathertrack=18;
     
     
