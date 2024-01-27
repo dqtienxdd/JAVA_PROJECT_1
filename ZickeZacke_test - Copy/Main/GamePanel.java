@@ -44,8 +44,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     //Game State
     public int gameState;
+    public int howManyPlayer;
     public final int titleState = 0;
-    public final int playState = 1;
+    public final int choosePState = 1;
+    public final int playState = 2;
  
 
     int FPS = 50;
@@ -151,8 +153,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         //Titlescreen
         if(gameState==titleState){
             ui.draw(g2);
+        } 
+        if(gameState==choosePState){
+            ui.draw(g2);
         }
-        else{
+        if(gameState == playState) {
             tileM.draw(g2);
             octagonM.draw(g2);
             featherM.draw(g2);
@@ -290,11 +295,25 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        
+        int mx = e.getX();
+        int my = e.getY();
+        if(gameState==titleState){
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303 && my<= 303+48){
+                    gameState=choosePState;
+                }
+            }
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303+48 && my<= 303+48+48){
+                    System.exit(1);
+                }
+            }
+        }
     }
     int dem=0;
     int num=0;
     int trackcount2=0;
+
     @Override
     
     public void mousePressed(MouseEvent e) {
@@ -353,18 +372,18 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     if(trackcount==0){
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
                         
-                        if(dem%2==1){
-                            if(players[currentPlayer].getIndex()!=0){
-                                feathers[currentPlayer].setPosition(feathers[currentPlayer].getPosition()+1);
-                                drawFeathers[currentPlayer].setPosition(players[currentPlayer].getPosition()+1);
-                            }
-                            
-                            player.playermovement(currentPlayer);
-                            featherM.Feathermovement(currentPlayer);
-                            System.out.println("Player "+currentPlayer+" turn");
-                            //System.out.println(players[currentPlayer].getPosition());
-                        }else dem=0;
-                    }
+                            if(dem%2==1){
+                                if(players[currentPlayer].getIndex()!=0){
+                                    feathers[currentPlayer].setPosition(feathers[currentPlayer].getPosition()+1);
+                                    drawFeathers[currentPlayer].setPosition(players[currentPlayer].getPosition()+1);
+                                }
+                                
+                                player.playermovement(currentPlayer);
+                                featherM.Feathermovement(currentPlayer);
+                                System.out.println("Player "+currentPlayer+" turn");
+                                //System.out.println(players[currentPlayer].getPosition());
+                            }else dem=0;
+                        }
                         else{
                             if(dem%2==1){
                             currentPlayer=(currentPlayer+1)%4;
@@ -380,15 +399,27 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             
         }
     
-        if(gameState==titleState){
+        
+        if(gameState==choosePState){
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
+                    howManyPlayer = 2;
                     gameState=playState;
+                    System.out.println(howManyPlayer);
                 }
             }
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48 && my<= 303+48+48){
-                    System.exit(1);
+                    howManyPlayer = 3;
+                    gameState=playState;
+                    System.out.println(howManyPlayer);
+                }
+            }
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303+48+48 && my<= 303+48+48+48){
+                    howManyPlayer = 4;
+                    gameState=playState;
+                    System.out.println(howManyPlayer);
                 }
             }
         }
