@@ -30,12 +30,12 @@ public class Entity {
     public int arrowCounter=0;
     public int arrowNum=1;
     public MapCoordinate[] xy;
-    public int playerposition1=1;
-    public int playerposition2=7;
+    public int playerposition1=0;
+    public int playerposition2=6;
     public int playerposition3=12;
     public int playerposition4=18;
-    public int bluefeathertrack=1;
-    public int yellowfeathertrack=7;
+    public int bluefeathertrack=0;
+    public int yellowfeathertrack=6;
     public int whitefeathertrack=12;
     public int redfeathertrack=18;
     
