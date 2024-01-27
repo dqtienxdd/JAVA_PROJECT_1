@@ -19,16 +19,23 @@ public class Entity {
     public BufferedImage chick11,chick12,chick13,chick14,chick15;
     public BufferedImage chick16,chick17,chick18,chick19,chick20;
     public BufferedImage feather1, feather2, feather3, feather4, feather5;
+    public BufferedImage arrowdown_down, arrowdown_up,
+                         arrowleft_left, arrowleft_right,
+                         arrowright_left, arrowright_right,
+                         arrowup_down, arrowup_up;
     public String direction;
+    public String direction2;
     public int spriteCounter=0;
     public int spriteNum=1;
+    public int arrowCounter=0;
+    public int arrowNum=1;
     public MapCoordinate[] xy;
-    public int playerposition1=0;
-    public int playerposition2=6;
+    public int playerposition1=1;
+    public int playerposition2=7;
     public int playerposition3=12;
     public int playerposition4=18;
-    public int bluefeathertrack=0;
-    public int yellowfeathertrack=6;
+    public int bluefeathertrack=1;
+    public int yellowfeathertrack=7;
     public int whitefeathertrack=12;
     public int redfeathertrack=18;
     
