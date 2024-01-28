@@ -28,6 +28,8 @@ public class UI {
     public Rectangle chooseButton2 = new Rectangle(261,303, 240, 48);
     public Rectangle chooseButton3 = new Rectangle(261,303+48, 240, 48);
     public Rectangle chooseButton4 = new Rectangle(261,303+96, 240, 48);
+    public Rectangle MainMenu = new Rectangle(25,350, 192, 48);
+    public Rectangle ExitButton1 = new Rectangle(585,350, 192, 48);
     public int getcommandNum(){
         return this.commandNum;
     }
@@ -64,10 +66,14 @@ public class UI {
         if(gp.gameState == gp.choosePState) {
             drawPlayerScreen();
         }
+        if(gp.gameState == gp.endState) {
+            drawEndScreen();
+        }
     }
     public void getTitleImage(){
         
             title[0] = new Tile("background2", 0);
+            title[1] = new Tile("endbackground",1);
     }
     public void drawTitleScreen(){
         // g2.setFont(g2.getFont().deriveFont(Font.BOLD,66F));
@@ -116,7 +122,7 @@ public class UI {
     public void drawPlayerScreen(){
         // g2.setFont(g2.getFont().deriveFont(Font.BOLD,66F));
         // String text = "Zicke Zacke Hühnerkacke";
-        String text1 = "xdd";
+        String text = "xdd";
         int x;
         int y = gp.tileSize*3;
         //Box
@@ -128,7 +134,7 @@ public class UI {
         g2.drawImage(title[0].getPicture(), 0, 0, gp.screenWidth, gp.screenHeight, null);
         int width = gp.tileSize*5;
         int height = gp.tileSize*3;
-        int Xbox = getXforCenteredText(text1)-gp.tileSize*3;
+        int Xbox = getXforCenteredText(text)-gp.tileSize*3;
         int Ybox = gp.tileSize*6;
         drawSubWindow(286, 303,width,height);
         //Menu
@@ -136,26 +142,26 @@ public class UI {
 
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
-        text1 = "2 Players";
-        x = getXforCenteredText(text1);
+        text = "2 Players";
+        x = getXforCenteredText(text);
         y += gp.tileSize*4;
-        g2.drawString(text1, x, y);
+        g2.drawString(text, x, y);
         if(commandNum == 3){
             g2.drawString(">", x - gp.tileSize, y);
         }
         
-        text1 = "3 Players";
-        x = getXforCenteredText(text1);
+        text = "3 Players";
+        x = getXforCenteredText(text);
         y += gp.tileSize;
-        g2.drawString(text1, x, y);
+        g2.drawString(text, x, y);
         if(commandNum == 4){
             g2.drawString(">", x - gp.tileSize, y);
         }
 
-        text1 = "4 Players";
-        x = getXforCenteredText(text1);
+        text = "4 Players";
+        x = getXforCenteredText(text);
         y += gp.tileSize;
-        g2.drawString(text1, x, y);
+        g2.drawString(text, x, y);
         if(commandNum == 5){
             g2.drawString(">", x - gp.tileSize, y);
         }
@@ -164,6 +170,42 @@ public class UI {
         g2.draw(chooseButton3);
         g2.draw(chooseButton4);
         
+    }
+    public void drawEndScreen() {
+        String text = "xdd";
+        int x;
+        int y = gp.tileSize*3;
+
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON); 
+        g2.drawImage(title[1].getPicture(), 0, 0, gp.screenWidth, gp.screenHeight, null);
+        int width = gp.tileSize*4;
+        int height = gp.tileSize;
+        int Xbox = getXforCenteredText(text)-gp.tileSize*3;
+        int Ybox = gp.tileSize*6;
+        drawSubWindow(570, 350,width,height);
+        drawSubWindow(50, 350,width,height);
+
+        g2.setColor(Color.white);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
+        text = "Main Menu";
+        x = 80;
+        y = gp.tileSize * 8;
+        g2.drawString(text, x, y);
+        if(commandNum == 6){
+            g2.drawString(">", x - gp.tileSize, y);
+        }
+
+        text = "Exit Game";
+        x = 610;
+        y = gp.tileSize*8;
+        g2.drawString(text, x, y);
+        if(commandNum == 7){
+            g2.drawString(">", x - gp.tileSize, y);
+        }
+        g2.setColor(new Color(255,255,255, 0));
+        g2.draw(MainMenu);
+        g2.draw(ExitButton1);
+
     }
     public void drawSubWindow(int x, int y, int width, int height){
         Color c = new Color(0,0,0,200);

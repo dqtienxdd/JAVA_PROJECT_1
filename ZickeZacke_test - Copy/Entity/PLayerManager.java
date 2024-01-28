@@ -201,6 +201,68 @@ public class PLayerManager extends Entity {
         }
         
     }
+    // public void drawWinPlayer(Graphics2D g2, int currentPlayer) {
+    //     BufferedImage blue = null;
+    //     BufferedImage yellow = null;
+    //     BufferedImage white = null;
+    //     BufferedImage red = null;
+
+    //     switch (direction) {
+    //         case "normal":
+    //             if(spriteNum==1){
+    //                 blue = chick1;
+    //                 yellow = chick6;
+    //                 white = chick11;
+    //                 red = chick16;
+    //             }
+    //             if(spriteNum==2){
+    //                 blue = chick2;
+    //                 yellow = chick7;
+    //                 white = chick12;
+    //                 red = chick17;
+    //             }
+    //             if(spriteNum==3){
+    //                 blue = chick3;
+    //                 yellow = chick8;
+    //                 white = chick13;
+    //                 red = chick18;
+    //             }
+    //             if(spriteNum==4){
+    //                 blue = chick4;
+    //                 yellow = chick9;
+    //                 white = chick14;
+    //                 red = chick19;
+    //             }
+    //             if(spriteNum==5){
+    //                 blue = chick5;
+    //                 yellow = chick10;
+    //                 white = chick15;
+    //                 red = chick20;
+    //             }
+    //             if(spriteNum>=6 &&spriteNum<=8){
+    //                 blue = chick1;
+    //                 yellow = chick6;
+    //                 white = chick11;
+    //                 red = chick16;
+    //             }
+    //             break;
+        
+    //         default:
+    //             break;
+    //     }
+    //         if(players[currentPlayer].getPosition() == players[0].getPosition()) {
+    //             g2.drawImage(blue, xy[players[currentPlayer].getPosition()].getX() , xy[players[currentPlayer].getPosition()].getY(), gp.chickensize*5, gp.chickensize*5, null);
+    //         }
+    //         if(players[currentPlayer].getPosition() == players[1].getPosition()) {
+    //             g2.drawImage(yellow, xy[players[currentPlayer].getPosition()].getX() , xy[players[currentPlayer].getPosition()].getY(), gp.chickensize*5, gp.chickensize*5, null);
+    //         }
+    //         if(players[currentPlayer].getPosition() == players[2].getPosition()) {
+    //             g2.drawImage(white, xy[players[currentPlayer].getPosition()].getX() , xy[players[currentPlayer].getPosition()].getY(), gp.chickensize*5, gp.chickensize*5, null);
+    //         }
+    //         if(players[currentPlayer].getPosition() == players[3].getPosition()) {
+    //             g2.drawImage(red, xy[players[currentPlayer].getPosition()].getX() , xy[players[currentPlayer].getPosition()].getY(), gp.chickensize*5, gp.chickensize*5, null);
+    //         }
+    // }
     public void draw(Graphics2D g2){
         BufferedImage blue = null;
         BufferedImage yellow = null;

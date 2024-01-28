@@ -11,6 +11,7 @@ import java.util.Random;
 import Main.MouseListen;
 import javax.swing.*;
 
+import Entity.EndUI;
 import Entity.Entity;
 import Entity.Feather;
 import Entity.FeatherManager;
@@ -27,8 +28,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int tileSize = originalTilesize*scale;
     public final int maxScreenCol= 17;
     public final int maxScreenRow= 13;
-    public final int screenWidth = tileSize*maxScreenCol; //768
-    public final int screenHeight = tileSize*maxScreenRow; //576
+    public final int screenWidth = tileSize*maxScreenCol; //816
+    public final int screenHeight = tileSize*maxScreenRow; //624
     public final int eggwidth = 63;
     public final int eggheight = 75;
     public final int maprow = 8;
@@ -49,6 +50,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int titleState = 0;
     public final int choosePState = 1;
     public final int playState = 2;
+    public final int endState = 3;
  
 
     int FPS = 55;
@@ -60,6 +62,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     UI ui = new UI(this);
     Thread gameThread;
     PLayerManager player = new PLayerManager(this);
+    EndUI endG = new EndUI(this);
     public int currentPlayer = 0;
     public int fraudChicken;
     public int getGameState() {
@@ -145,7 +148,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void update(){
         featherM.update();
         player.update();
-        
+        endG.update();
     }
    
     public void paintComponent(Graphics g){
@@ -157,6 +160,14 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         } 
         if(gameState==choosePState){
             ui.draw(g2);
+        }
+        if(gameState == endState) {
+
+            ui.draw(g2);
+            endG.drawVictory(g2);
+            // player.drawWinPlayer(g2, currentPlayer);
+            // featherM.drawWinFeather(g2, currentPlayer);            
+
         }
         if(gameState == playState) {
             tileM.draw(g2);
@@ -310,6 +321,19 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 }
             }
         }
+        if(gameState==endState){
+            if(mx >= 50 && mx<= 40+192){
+                if(my >= 350 && my<= 350+48){
+                    gameState=titleState;
+                }
+            }
+            if(mx >= 585 && mx<= 565+192){
+                if(my >= 350 && my<= 350+48){
+                    System.exit(1);
+                }
+            }
+        }
+
     }
     int dem=0;
     int num=0;
@@ -366,6 +390,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 }else dem=0;
                             }
+                        
                             
                     }
                     
@@ -374,8 +399,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                         if(dem%2==1){
                             if(players[currentPlayer].getIndex()!=0){
-                                feathers[currentPlayer].setPosition(feathers[currentPlayer].getPosition()+1);
-                                drawFeathers[currentPlayer].setPosition(players[currentPlayer].getPosition()+1);
+                                feathers[currentPlayer].setPosition((feathers[currentPlayer].getPosition()+1)%24);
+                                drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
                             }
                             
                             player.playermovement(currentPlayer);
@@ -390,9 +415,12 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             }else dem=0;
                         }
+                        
                     }
                     trackcount=0;
-                    
+                    if(players[currentPlayer].getIndex() == 4) {
+                        gameState = endState;
+                    }
                 }
                 
             }

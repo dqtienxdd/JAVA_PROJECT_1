@@ -23,12 +23,16 @@ public class Entity {
                          arrowleft_left, arrowleft_right,
                          arrowright_left, arrowright_right,
                          arrowup_down, arrowup_up;
+    public BufferedImage victory_up, victory_down;
+    public String end;
     public String direction;
     public String direction2;
     public int spriteCounter=0;
     public int spriteNum=1;
     public int arrowCounter=0;
     public int arrowNum=1;
+    public int endCounter = 0;
+    public int endNum = 1;
     public MapCoordinate[] xy;
     public int playerposition1=0;
     public int playerposition2=6;
