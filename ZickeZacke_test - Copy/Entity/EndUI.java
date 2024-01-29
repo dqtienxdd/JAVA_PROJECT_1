@@ -23,7 +23,6 @@ public class EndUI extends Entity {
         
         xy = new MapCoordinate[24];
         
-
         setDefaultValue();
         getEndImage();
     }

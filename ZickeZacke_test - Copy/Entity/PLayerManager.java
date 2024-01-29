@@ -14,13 +14,13 @@ public class PLayerManager extends Entity {
     GamePanel gp;
     
     
-  
+    
+
     public MapCoordinate[] xy;
     Feather[] feathers = FeatherManager.getArray();
     
     public PLayerManager(GamePanel gp){
         this.gp = gp;
-        
         xy = new MapCoordinate[24];
         setUpPlayer();
         setDefaultValue();
@@ -62,11 +62,27 @@ public class PLayerManager extends Entity {
     }
     public void setUpPlayer()
     {
-        players = new Player[4];
-        players[0]= new Player("Blue", playerposition1, 1);
-        players[1]= new Player("Yellow", playerposition2, 1);
-        players[2]= new Player("White", playerposition3, 1);
-        players[3]= new Player("Red", playerposition4, 1);
+        if(gp.howManyPlayer==2)
+        {
+            players = new Player[2];
+            players[0]= new Player("Blue", playerposition1, 1);
+            players[1]= new Player("Yellow", playerposition3, 1);
+        }
+        if(gp.howManyPlayer==3)
+        {
+            players = new Player[3];
+            players[0]= new Player("Blue", 0, 1);
+            players[1]= new Player("Yellow", 8, 1);
+            players[2]= new Player("White", 16 , 1);
+        }
+        if(gp.howManyPlayer==4)
+        {
+            players = new Player[4];
+            players[0]= new Player("Blue", playerposition1, 1);
+            players[1]= new Player("Yellow", playerposition2, 1);
+            players[2]= new Player("White", playerposition3, 1);
+            players[3]= new Player("Red", playerposition4, 1);
+        }
         //System.out.println(players[0].getName());
     }
          
@@ -107,7 +123,6 @@ public class PLayerManager extends Entity {
     }
     public void playermovement(int currentPlayer){
         players[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
-        
         //System.out.println(players[currentPlayer].getPosition());
         
     }
@@ -311,11 +326,24 @@ public class PLayerManager extends Entity {
             default:
                 break;
         }
-        
-        g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(white, xy[players[2].getPosition()].getX() , xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(red, xy[players[3].getPosition()].getX() , xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
 
+        if(gp.howManyPlayer==2)
+        {
+            g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        }
+        if(gp.howManyPlayer==3)
+        {
+            g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(white, xy[players[2].getPosition()].getX() , xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        }
+        if(gp.howManyPlayer==4)
+        {
+            g2.drawImage(blue, xy[players[0].getPosition()].getX() , xy[players[0].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellow, xy[players[1].getPosition()].getX() , xy[players[1].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(white, xy[players[2].getPosition()].getX() , xy[players[2].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(red, xy[players[3].getPosition()].getX() , xy[players[3].getPosition()].getY(), gp.chickensize, gp.chickensize, null);
+        }
     }
 }
