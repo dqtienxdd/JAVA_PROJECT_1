@@ -423,7 +423,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 50 && mx<= 40+192){
                 if(my >= 350 && my<= 350+48){
                     playSE(0);
-                    
+                    setDefault();
                     gameState=titleState;
                 }
             }
