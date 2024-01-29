@@ -14,22 +14,48 @@ public class EndUI extends Entity {
     GamePanel gp;
     PLayerManager p;
     FeatherManager f;
-  
+    public static Feather[] featheranimation1, featheranimation2, featheranimation3, featheranimation4, featheranimation5;
+    String[] name = {"bluefeather1","yellowfeather1","whitefeather1","redfeather1",
+                     "bluefeather2","yellowfeather2","whitefeather2","redfeather2",
+                     "bluefeather3","yellowfeather3","whitefeather3","redfeather3",
+                     "bluefeather4","yellowfeather4","whitefeather4","redfeather4"};
     public MapCoordinate[] xy;
+    
     Feather[] feathers = FeatherManager.getArray();
     
     public EndUI(GamePanel gp ){
         this.gp = gp;
         
         xy = new MapCoordinate[24];
-        
+        featheranimation1 = new Feather[4];
+        featheranimation2 = new Feather[4];
+        featheranimation3 = new Feather[4];
+        featheranimation4 = new Feather[4];
+        featheranimation5 = new Feather[4];
         setDefaultValue();
         getEndImage();
+        getFeatherImage();
+    }
+    public void getFeatherImage(){
+        try{
+            
+            for(int i = 0;i < 4;i++){
+                featheranimation1[i] = new Feather(name[i],i, 0);
+                featheranimation2[i] = new Feather(name[i+4],i, 1);
+                featheranimation3[i] = new Feather(name[i+8],i, 2);
+                featheranimation4[i] = new Feather(name[i+12],i, 3);
+                featheranimation5[i] = new Feather(name[i+8],i, 2);
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
     public static Player[] getArray()
     {
         return players;
     }
+    
     public void setDefaultValue(){
         x = 408;
         y = 100;
@@ -119,6 +145,10 @@ public class EndUI extends Entity {
         BufferedImage yellow = null;
         BufferedImage white = null;
         BufferedImage red = null;
+        BufferedImage bluefeather = null;
+        BufferedImage yellowfeather = null;
+        BufferedImage whitefeather = null;
+        BufferedImage redfeather = null;
         switch (end) {
             case "normal":
                 if(spriteNum==1){
@@ -126,52 +156,153 @@ public class EndUI extends Entity {
                     yellow = chick6;
                     white = chick11;
                     red = chick16;
+                    bluefeather = featheranimation1[0].setPicture(name[0]);
+                    yellowfeather = featheranimation1[1].setPicture(name[1]);
+                    whitefeather = featheranimation1[2].setPicture(name[2]);
+                    redfeather = featheranimation1[3].setPicture(name[3]);
                 }
                 if(spriteNum==2){
                     blue = chick2;
                     yellow = chick7;
                     white = chick12;
                     red = chick17;
+                    bluefeather = featheranimation2[0].setPicture(name[0+4]);
+                    yellowfeather = featheranimation2[1].setPicture(name[1+4]);
+                    whitefeather = featheranimation2[2].setPicture(name[2+4]);
+                    redfeather = featheranimation2[3].setPicture(name[3+4]);
                 }
                 if(spriteNum==3){
                     blue = chick3;
                     yellow = chick8;
                     white = chick13;
                     red = chick18;
+                    bluefeather = featheranimation3[0].setPicture(name[0+8]);
+                    yellowfeather = featheranimation3[1].setPicture(name[1+8]);
+                    whitefeather = featheranimation3[2].setPicture(name[2+8]);
+                    redfeather = featheranimation3[3].setPicture(name[3+8]);
                 }
                 if(spriteNum==4){
                     blue = chick4;
                     yellow = chick9;
                     white = chick14;
                     red = chick19;
+                    bluefeather = featheranimation4[0].setPicture(name[0+12]);
+                    yellowfeather = featheranimation4[1].setPicture(name[1+12]);
+                    whitefeather = featheranimation4[2].setPicture(name[2+12]);
+                    redfeather = featheranimation4[3].setPicture(name[3+12]);
                 }
                 if(spriteNum==5){
                     blue = chick5;
                     yellow = chick10;
                     white = chick15;
                     red = chick20;
+                    bluefeather = featheranimation5[0].setPicture(name[0+8]);
+                    yellowfeather = featheranimation5[1].setPicture(name[1+8]);
+                    whitefeather = featheranimation5[2].setPicture(name[2+8]);
+                    redfeather = featheranimation5[3].setPicture(name[3+8]);
                 }
                 if(spriteNum>=6 &&spriteNum<=8){
                     blue = chick1;
                     yellow = chick6;
                     white = chick11;
                     red = chick16;
+                    bluefeather = featheranimation1[0].setPicture(name[0]);
+                    yellowfeather = featheranimation1[1].setPicture(name[1]);
+                    whitefeather = featheranimation1[2].setPicture(name[2]);
+                    redfeather = featheranimation1[3].setPicture(name[3]);
                 }
                 break;
             default:
                 break;
         }
         if(playerwin==0){
-            g2.drawImage(blue, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            if(gp.howManyPlayer == 2) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(blue, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            }
+            if(gp.howManyPlayer == 3) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(blue, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            }
+            if(gp.howManyPlayer == 4) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(redfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(blue, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            }
         }
         if(playerwin==1){
-            g2.drawImage(yellow, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            if(gp.howManyPlayer == 2) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellow, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 3) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellow, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 4) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(redfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellow, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
         }
         if(playerwin==2){
-            g2.drawImage(white, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            if(gp.howManyPlayer == 2) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(white, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 3) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(white, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 4) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(redfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(white, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
         }
         if(playerwin==3){
-            g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+            if(gp.howManyPlayer == 2) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 3) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
+            if(gp.howManyPlayer == 4) {
+                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(redfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
+                g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
+                
+            }
         }
     }
     public void drawVictory(Graphics2D g2) {

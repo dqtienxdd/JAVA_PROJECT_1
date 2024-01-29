@@ -327,6 +327,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         sound.setFile(i);
         sound.play();
     }
+    
     public Feather temp;
     public int feathercheck;
     public void takeFeather(int currentPlayer, int fraudChicken) {
@@ -402,7 +403,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         }
     
     
-
     @Override
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
