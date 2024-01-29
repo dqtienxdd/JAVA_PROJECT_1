@@ -527,8 +527,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
                     howManyPlayer = 2;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                    
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
@@ -537,8 +536,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48 && my<= 303+48+48){
                     howManyPlayer = 3;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                    
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
@@ -547,8 +545,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48+48 && my<= 303+48+48+48){
                     howManyPlayer = 4;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                 
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
