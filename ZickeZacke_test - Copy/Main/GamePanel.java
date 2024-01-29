@@ -34,7 +34,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     
    
 
-    int FPS = 10;
+    int FPS = 60;
 
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
