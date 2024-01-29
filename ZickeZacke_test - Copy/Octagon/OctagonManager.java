@@ -9,6 +9,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
+import Entity.Player;
 import Main.GamePanel;
 public class OctagonManager {
     GamePanel gp;
@@ -20,13 +21,13 @@ public class OctagonManager {
     {
         return octagons;
     }
-    public static void shuffleArray(Octagon[] array) {
+    public static void shuffleArray(String[] array) {
         Random random = new Random();
         int n = array.length;
         
         for (int i = 0; i < n; i++) {
             int randomIndex = i + random.nextInt(n - i);
-            Octagon temp = array[i];
+            String temp = array[i];
             array[i] = array[randomIndex];
             array[randomIndex] = temp;
         }
@@ -35,7 +36,7 @@ public class OctagonManager {
     public OctagonManager(GamePanel gp)
     {
         this.gp = gp;
-        octagons = new Octagon[12];
+        octagons = new Octagon[13];
     
         // mapTileNum = new int[gp.maxScreenCol][gp.maxScreenRow];
         
@@ -87,48 +88,49 @@ public class OctagonManager {
 
             // backside2 = new Octagon();
             // backside2.image = ImageIO.read(getClass().getResourceAsStream("/res/octagonal_shape/backside2.png"));
+            //shuffleArray(name);
             
             for(int i=0; i<12; i++)
             {
                 octagons[i] = new Octagon(name[i],i);
             }
+            octagons[12] = new Octagon("worm", 12);
+            
+            octagons[0].setX(300 + 48/2);
+            octagons[0].setY(140 + 48/2);
 
-            octagons[0].setX(300);
-            octagons[0].setY(140);
+            octagons[1].setX(396 + 48/2);
+            octagons[1].setY(140 + 48/2);
 
-            octagons[1].setX(396);
-            octagons[1].setY(140);
+            octagons[2].setX(300 + 48/2);
+            octagons[2].setY(215 + 48/2);
 
-            octagons[2].setX(300);
-            octagons[2].setY(215);
+            octagons[3].setX(396 + 48/2);
+            octagons[3].setY(215 + 48/2);
 
-            octagons[3].setX(396);
-            octagons[3].setY(215);
+            octagons[4].setX(300 + 48/2);
+            octagons[4].setY(290 + 48/2);
 
-            octagons[4].setX(300);
-            octagons[4].setY(290);
+            octagons[5].setX(396 + 48/2);
+            octagons[5].setY(290 + 48/2);
 
-            octagons[5].setX(396);
-            octagons[5].setY(290);
+            octagons[6].setX(300 + 48/2);
+            octagons[6].setY(365 + 48/2);
 
-            octagons[6].setX(300);
-            octagons[6].setY(365);
+            octagons[7].setX(396 + 48/2);
+            octagons[7].setY(365 + 48/2);
 
-            octagons[7].setX(390);
-            octagons[7].setY(365);
+            octagons[8].setX(204 + 48/2);
+            octagons[8].setY(215 + 48/2);
 
-            octagons[8].setX(204);
-            octagons[8].setY(215);
+            octagons[9].setX(492 + 48/2);
+            octagons[9].setY(215 + 48/2);
 
-            octagons[9].setX(492);
-            octagons[9].setY(215);
+            octagons[10].setX(204 + 48/2);
+            octagons[10].setY(290 + 48/2);
 
-            octagons[10].setX(204);
-            octagons[10].setY(290);
-
-            octagons[11].setX(492);
-            octagons[11].setY(290);
-
+            octagons[11].setX(492 + 48/2);
+            octagons[11].setY(290 + 48/2);
             
 
         } catch (Exception e) {
