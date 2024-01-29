@@ -31,12 +31,15 @@ public class FeatherManager extends Entity{
         featheranimation3 = new Feather[4];
         featheranimation4 = new Feather[4];
         featheranimation5 = new Feather[4];
-        setUpFeather();
-        setUpDraw();
+        
         setDefaultValue();
         getFeatherImage();
     }
-    
+    public void setUpFeatherManager()
+    {
+        setUpFeather();
+        setUpDraw();
+    }
     public void setDefaultValue(){
         x = 120;
         y = 37;

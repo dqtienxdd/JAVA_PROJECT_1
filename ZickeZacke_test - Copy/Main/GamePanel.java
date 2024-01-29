@@ -51,16 +51,20 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int choosePState = 1;
     public final int playState = 2;
     public final int endState = 3;
+
    
  
 
     int FPS = 55;
+    public boolean start = false;
     Entity xdd;
     MouseListen mouse;
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
     FeatherManager featherM = new FeatherManager(this);
     PLayerManager player = new PLayerManager(this);
+    FeatherManager featherM1;
+    PLayerManager player1;
     Sound sound = new Sound();
     
     UI ui = new UI(this);
@@ -150,9 +154,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
+       
         featherM.update();
         player.update();
         endG.update();
+        
     }
    
     public void paintComponent(Graphics g){
@@ -172,6 +178,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             // featherM.drawWinFeather(g2, currentPlayer);            
         }
         if(gameState == playState) {
+            
             tileM.draw(g2);
             player.drawArrowTurn(g2,currentPlayer);
             octagonM.draw(g2);
@@ -185,9 +192,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int direction =1;
     Octagon[] octagons = OctagonManager.getArray();
     Tile[] egg = TileManager.getArray();
-    Player[] players = PLayerManager.getArray();
-    Feather[] feathers = FeatherManager.getArray();
-    Feather[] drawFeathers = FeatherManager.getDrawArray();
+    Player[] players;
+    Feather[] feathers;
+    Feather[] drawFeathers;
     
     int trackcount = 0;
     int playercheck = currentPlayer;
@@ -418,12 +425,13 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 50 && mx<= 40+192){
                 if(my >= 350 && my<= 350+48){
                     playSE(0);
-                    setDefault();
+                    
                     gameState=titleState;
                 }
             }
             if(mx >= 585 && mx<= 565+192){
                 if(my >= 350 && my<= 350+48){
+                    playSE(0);
                     System.exit(1);
                 }
             }
@@ -524,8 +532,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
                     howManyPlayer = 2;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                    featherM.setUpFeatherManager();
+                    player.setUpPlayerManager();
+                    players = PLayerManager.getArray();
+                    feathers = FeatherManager.getArray();
+                    drawFeathers = FeatherManager.getDrawArray();
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
@@ -534,8 +545,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48 && my<= 303+48+48){
                     howManyPlayer = 3;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                    featherM.setUpFeatherManager();
+                    player.setUpPlayerManager();
+                    players = PLayerManager.getArray();
+                    feathers = FeatherManager.getArray();
+                    drawFeathers = FeatherManager.getDrawArray();
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
@@ -544,8 +558,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48+48 && my<= 303+48+48+48){
                     howManyPlayer = 4;
-                    FeatherManager featherM = new FeatherManager(this);
-                    PLayerManager player = new PLayerManager(this);
+                    featherM.setUpFeatherManager();
+                    player.setUpPlayerManager();
+                    players = PLayerManager.getArray();
+                    feathers = FeatherManager.getArray();
+                    drawFeathers = FeatherManager.getDrawArray();
                     gameState=playState;
                     playSE(0);
                     System.out.println(howManyPlayer);
