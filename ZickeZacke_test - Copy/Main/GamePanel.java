@@ -93,40 +93,19 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         this.setFocusable(true);
         timer = new Timer(50, this);
         timer.start();
-        
-        }
-    
+    }
+
     public void setupGame(){
         gameState = titleState;
     }
+
     public void startGameThread() {
         gameThread = new Thread(this);
         gameThread.start();
     }
+
     //Basically how fps workds
     @Override
-    // public void run() {
-    //     double drawInterval = 1000000000/60;
-    //     double nextDrawTime = System.nanoTime() + drawInterval;
-    //     while(gameThread!=null){
-            
-    //         update();
-    //         repaint();
-            
-    //         try {
-    //             double remainingTime = nextDrawTime - System.nanoTime();
-    //             remainingTime = remainingTime/1000000;
-    //             if(remainingTime<0){
-    //                 remainingTime = 0;
-    //             }
-    //             Thread.sleep((long) remainingTime);
-    //             nextDrawTime += drawInterval;
-    //         } catch (InterruptedException e) {
-                
-    //             e.printStackTrace();
-    //         }
-    //     }
-    // }
     public void run(){
         double drawInterval = 1000000000/FPS;
         double delta = 0;
@@ -173,9 +152,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         if(gameState == endState) {
             ui.draw(g2);
             endG.drawVictory(g2);
-            endG.drawWinPlayer(g2,playerwin);
-            // player.drawWinPlayer(g2, currentPlayer);
-            // featherM.drawWinFeather(g2, currentPlayer);            
+            endG.drawWinPlayer(g2,playerwin);       
         }
         if(gameState == playState) {
             
@@ -185,10 +162,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             featherM.draw(g2);
             player.draw(g2);
         }
-        
         g2.dispose();
 
     }
+
     int direction =1;
     Octagon[] octagons = OctagonManager.getArray();
     Tile[] egg = TileManager.getArray();
@@ -202,13 +179,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int feather2;
     int feather3;
     public void checkChicken(int currentPlayer){
-        //playercheck = currentPlayer;
         if(howManyPlayer==2)
         {
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+1)%howManyPlayer;
-                //fraudChicken = playercheck;
                 checkChicken(currentPlayer);
             }
         }
@@ -217,14 +192,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+1)%howManyPlayer;
-                //fraudChicken = playercheck;
                 checkChicken(currentPlayer);
             }
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%howManyPlayer].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+2)%howManyPlayer;
-                //fraudChicken = playercheck;
-                
                 checkChicken(currentPlayer);
             }
 
@@ -235,21 +207,16 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+1)%4;
-                //fraudChicken = playercheck;
                 checkChicken(currentPlayer);
             }
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%howManyPlayer].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+2)%4;
-                //fraudChicken = playercheck;
-                
                 checkChicken(currentPlayer);
             }
             if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
                 trackcount+=1;
                 playercheck=(playercheck+3)%4;
-                //fraudChicken = playercheck;
-                
                 checkChicken(currentPlayer);
             }
 
@@ -258,7 +225,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         
     }
     public void checkFeather(int currentPlayer){
-        //playercheck = currentPlayer;
         if(howManyPlayer==2)
         {
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
@@ -484,9 +450,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 //System.out.println(players[currentPlayer].getPosition());
                             }else dem=0;
-                        }
-                        
-                            else{
+                        } else {
                                 if(dem%2==1){
                                     playSE(3);
                                     currentPlayer=(currentPlayer+1)%howManyPlayer;
@@ -512,8 +476,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
                         }else dem=0;
-                    }
-                        else{
+                    }else{
                             if(dem%2==1){
                                 playSE(3);
                                 currentPlayer=(currentPlayer+1)%howManyPlayer;
@@ -527,6 +490,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         gameState = endState;
                         playSE(4);
                         currentPlayer=0;
+                        dem=0;
                     }
                 }
                 
@@ -584,9 +548,4 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    // public boolean flip()
-    // {
-    //     width -=30*direction;
-    //     x+=17
-    // } 
 }
