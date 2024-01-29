@@ -48,6 +48,7 @@ public class EndUI extends Entity {
         }
     }
     public void update(){
+        
         if(gp.gameState == gp.endState){
             end = "normal";
         }else{
