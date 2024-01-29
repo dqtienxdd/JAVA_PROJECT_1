@@ -59,6 +59,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     MouseListen mouse;
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
+    FeatherManager featherM = new FeatherManager(this);
+    PLayerManager player = new PLayerManager(this);
+    Sound sound = new Sound();
     
     UI ui = new UI(this);
     Thread gameThread;
@@ -311,8 +314,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
             checkFeather(currentPlayer);
         }
-        
     }
+}
     public void playSE(int i){
         sound.setFile(i);
         sound.play();
@@ -471,7 +474,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                             else{
                                 if(dem%2==1){
-                                currentPlayer=(currentPlayer+1)%4;
+                                currentPlayer=(currentPlayer+1)%howManyPlayer;
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 }else dem=0;
                             }
@@ -497,7 +500,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                         else{
                             if(dem%2==1){
-                            currentPlayer=(currentPlayer+1)%4;
+                            currentPlayer=(currentPlayer+1)%howManyPlayer;
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             }else dem=0;
                         }  
