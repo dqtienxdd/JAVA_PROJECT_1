@@ -46,22 +46,25 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     //Game State
     public int gameState;
-    public int howManyPlayer;
+    public int howManyPlayer=3;
     public final int titleState = 0;
     public final int choosePState = 1;
     public final int playState = 2;
     public final int endState = 3;
+   
  
 
     int FPS = 55;
     Entity xdd;
     MouseListen mouse;
+    FeatherManager featherM = new FeatherManager(this);
+    PLayerManager player = new PLayerManager(this);
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
-    FeatherManager featherM = new FeatherManager(this);
+    
     UI ui = new UI(this);
     Thread gameThread;
-    PLayerManager player = new PLayerManager(this);
+    
     EndUI endG = new EndUI(this);
     public int currentPlayer = 0;
     public int fraudChicken;
@@ -132,8 +135,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             timer += (currentTime - lastTime);
             lastTime = currentTime;
             if(delta>=1){
-                update();
-                repaint();
+                    update();
+                    repaint();
                 delta--;
                 drawCount++;
             }
@@ -162,12 +165,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             ui.draw(g2);
         }
         if(gameState == endState) {
-
             ui.draw(g2);
             endG.drawVictory(g2);
             // player.drawWinPlayer(g2, currentPlayer);
             // featherM.drawWinFeather(g2, currentPlayer);            
-
         }
         if(gameState == playState) {
             tileM.draw(g2);
@@ -194,31 +195,97 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int feather3;
     public void checkChicken(int currentPlayer){
         //playercheck = currentPlayer;
-        if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
-            trackcount+=1;
-            playercheck=(playercheck+1)%4;
-            //fraudChicken = playercheck;
-            
-            checkChicken(currentPlayer);
+        if(howManyPlayer==2)
+        {
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+1)%howManyPlayer;
+                //fraudChicken = playercheck;
+                checkChicken(currentPlayer);
+            }
         }
-        if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%4].getPosition()){
-            trackcount+=1;
-            playercheck=(playercheck+2)%4;
-            //fraudChicken = playercheck;
-            
-            checkChicken(currentPlayer);
+        if(howManyPlayer==3)
+        {
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+1)%howManyPlayer;
+                //fraudChicken = playercheck;
+                checkChicken(currentPlayer);
+            }
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%howManyPlayer].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+2)%howManyPlayer;
+                //fraudChicken = playercheck;
+                
+                checkChicken(currentPlayer);
+            }
+
         }
-        if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
-            trackcount+=1;
-            playercheck=(playercheck+3)%4;
-            //fraudChicken = playercheck;
-            
-            checkChicken(currentPlayer);
+        
+        if(howManyPlayer==4)
+        {
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+1)%4;
+                //fraudChicken = playercheck;
+                checkChicken(currentPlayer);
+            }
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%howManyPlayer].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+2)%4;
+                //fraudChicken = playercheck;
+                
+                checkChicken(currentPlayer);
+            }
+            if((players[playercheck].getPosition()+1)%24==players[(playercheck+3)%4].getPosition()){
+                trackcount+=1;
+                playercheck=(playercheck+3)%4;
+                //fraudChicken = playercheck;
+                
+                checkChicken(currentPlayer);
+            }
+
         }
+        
         
     }
     public void checkFeather(int currentPlayer){
         //playercheck = currentPlayer;
+        if(howManyPlayer==2)
+        {
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+1)%howManyPlayer;
+            fraudChicken = playercheck;
+            if(dem%2==1){
+                takeFeather(currentPlayer, fraudChicken);
+            }
+            checkFeather(currentPlayer);
+        }
+        }
+        if(howManyPlayer==3)
+        {
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%howManyPlayer].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+1)%howManyPlayer;
+            fraudChicken = playercheck;
+            if(dem%2==1){
+                takeFeather(currentPlayer, fraudChicken);
+            }
+            checkFeather(currentPlayer);
+        }
+        if((players[playercheck].getPosition()+1)%24==players[(playercheck+2)%howManyPlayer].getPosition()){
+            trackcount+=1;
+            playercheck=(playercheck+2)%howManyPlayer;
+            fraudChicken = playercheck;
+            if(dem%2==1){
+                takeFeather(currentPlayer, fraudChicken);
+            }
+            checkFeather(currentPlayer);
+        }
+    }
+        if(howManyPlayer==4)
+        {
         if((players[playercheck].getPosition()+1)%24==players[(playercheck+1)%4].getPosition()){
             trackcount+=1;
             playercheck=(playercheck+1)%4;
@@ -246,7 +313,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
             checkFeather(currentPlayer);
         }
-        
+    }
     }
     
     public Feather temp;
@@ -258,23 +325,46 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 feathers[fraudChicken]= drawFeathers[currentPlayer];
             }
             if(players[fraudChicken].getIndex()>=1){
-                if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
-                    feathers[fraudChicken]= drawFeathers[currentPlayer];
+                if(howManyPlayer==4)
+                {
+                    if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+1)%4].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+1)%4]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+2)%4].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+2)%4]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+3)%4]= drawFeathers[currentPlayer];
+                    }
                 }
-                if(feathers[(fraudChicken+1)%4].getPosition()==players[fraudChicken].getPosition()){
-                    feathers[(fraudChicken+1)%4]= drawFeathers[currentPlayer];
+                if(howManyPlayer==3)
+                {
+                    if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+1)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+1)%howManyPlayer]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+2)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+2)%howManyPlayer]= drawFeathers[currentPlayer];
+                    }
                 }
-                if(feathers[(fraudChicken+2)%4].getPosition()==players[fraudChicken].getPosition()){
-                    feathers[(fraudChicken+2)%4]= drawFeathers[currentPlayer];
+                if(howManyPlayer==2)
+                {
+                    if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                    }
+                    if(feathers[(fraudChicken+1)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
+                        feathers[(fraudChicken+1)%howManyPlayer]= drawFeathers[currentPlayer];
+                    }
                 }
-                if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
-                    feathers[(fraudChicken+3)%4]= drawFeathers[currentPlayer];
-                }
+                
             }
-            
             players[currentPlayer].setIndex(players[currentPlayer].getIndex()+players[fraudChicken].getIndex());
             players[fraudChicken].setIndex(players[fraudChicken].getIndex()-players[fraudChicken].getIndex());
-            
         }
         System.out.println("player"+currentPlayer+": "+players[currentPlayer].getIndex());
         System.out.println("player"+fraudChicken+": "+players[fraudChicken].getIndex());
@@ -296,15 +386,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                 }
             }  
-        }
-            
-                 
-       
+        } 
        repaint();
         }
-    
-    
-
     @Override
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
@@ -333,7 +417,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 }
             }
         }
-
     }
     int dem=0;
     int num=0;
@@ -351,9 +434,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             
                
             flip=true;
-            direction=1;
-               
-            
+            direction=1; 
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
@@ -386,7 +467,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                             else{
                                 if(dem%2==1){
-                                currentPlayer=(currentPlayer+1)%4;
+                                currentPlayer=(currentPlayer+1)%howManyPlayer;
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 }else dem=0;
                             }
@@ -411,23 +492,19 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                         else{
                             if(dem%2==1){
-                            currentPlayer=(currentPlayer+1)%4;
+                            currentPlayer=(currentPlayer+1)%howManyPlayer;
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             }else dem=0;
-                        }
-                        
+                        }  
                     }
                     trackcount=0;
-                    if(players[currentPlayer].getIndex() == 4) {
+                    if(players[currentPlayer].getIndex() == howManyPlayer) {
                         gameState = endState;
                     }
                 }
                 
-            }
-            
+            }   
         }
-    
-        
         if(gameState==choosePState){
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
@@ -450,32 +527,21 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     System.out.println(howManyPlayer);
                 }
             }
-        }
-        
-        
+        }   
     }
-
     @Override
     public void mouseReleased(MouseEvent e) {
-        
     }
-
     @Override
     public void mouseEntered(MouseEvent e) {
-        
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-      
     }
-
     // public boolean flip()
     // {
     //     width -=30*direction;
     //     x+=17
-    // }
-        
-    
-    
+    // } 
 }

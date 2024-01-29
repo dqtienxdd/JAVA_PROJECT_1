@@ -2,7 +2,6 @@ package Entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
 
 import Main.GamePanel;
@@ -77,20 +76,53 @@ public class FeatherManager extends Entity{
     }
     public void setUpFeather()
     {
-        feathers = new Feather[4];
-        feathers[0]= new Feather("xdd", bluefeathertrack, bluefeathertrack); 
-        feathers[1]= new Feather("xdd", yellowfeathertrack, yellowfeathertrack);
-        feathers[2]= new Feather("xdd", whitefeathertrack, whitefeathertrack);
-        feathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
+        if(gp.howManyPlayer==2)
+        {
+            feathers = new Feather[2];
+            feathers[0]= new Feather("xdd", 0, 0); 
+            feathers[1]= new Feather("xdd", 12, 12);
+        }
+        if(gp.howManyPlayer==3)
+        {
+            feathers = new Feather[3];
+            feathers[0]= new Feather("xdd", 0, 0); 
+            feathers[1]= new Feather("xdd", 8, 8);
+            feathers[2]= new Feather("xdd", 16, 16);
+        }
+        if(gp.howManyPlayer==4)
+        {
+            feathers = new Feather[4];
+            feathers[0]= new Feather("xdd", bluefeathertrack, bluefeathertrack); 
+            feathers[1]= new Feather("xdd", yellowfeathertrack, yellowfeathertrack);
+            feathers[2]= new Feather("xdd", whitefeathertrack, whitefeathertrack);
+            feathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
         //System.out.println(players[0].getName());
     }
+}
     public void setUpDraw()
     {
-        drawfeathers = new Feather[4];
-        drawfeathers[0]= new Feather("xdd", bluefeathertrack, bluefeathertrack); 
-        drawfeathers[1]= new Feather("xdd", yellowfeathertrack, yellowfeathertrack);
-        drawfeathers[2]= new Feather("xdd", whitefeathertrack, whitefeathertrack);
-        drawfeathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
+        if(gp.howManyPlayer==2)
+        {
+            drawfeathers = new Feather[2];
+            drawfeathers[0]= new Feather("xdd", 0, 0); 
+            drawfeathers[1]= new Feather("xdd", 12, 12);
+        }
+        if(gp.howManyPlayer==3)
+        {
+            drawfeathers = new Feather[3];
+            drawfeathers[0]= new Feather("xdd", 0, 0); 
+            drawfeathers[1]= new Feather("xdd", 8, 8);
+            drawfeathers[2]= new Feather("xdd", 16, 16);
+        }
+        if(gp.howManyPlayer==4)
+        {
+            drawfeathers = new Feather[4];
+            drawfeathers[0]= new Feather("xdd", bluefeathertrack, bluefeathertrack); 
+            drawfeathers[1]= new Feather("xdd", yellowfeathertrack, yellowfeathertrack);
+            drawfeathers[2]= new Feather("xdd", whitefeathertrack, whitefeathertrack);
+            drawfeathers[3]= new Feather("xdd", redfeathertrack, redfeathertrack);
+    }
+        
         //System.out.println(players[0].getName());
     }
     public void getFeatherImage(){
@@ -150,28 +182,69 @@ public class FeatherManager extends Entity{
 
     }
     public void setFeather(int feather){
-        bluefeathertrack = players[0].getPosition();
-        yellowfeathertrack = players[1].getPosition();
-        whitefeathertrack = players[2].getPosition();
-        redfeathertrack = players[3].getPosition();
+        if(gp.howManyPlayer==2)
+        {
+            bluefeathertrack = players[0].getPosition();
+            yellowfeathertrack = players[1].getPosition();
+        }
+        if(gp.howManyPlayer==3)
+        {
+            bluefeathertrack = players[0].getPosition();
+            yellowfeathertrack = players[1].getPosition();
+            whitefeathertrack = players[2].getPosition();
+        }
+        if(gp.howManyPlayer==4)
+        {
+            bluefeathertrack = players[0].getPosition();
+            yellowfeathertrack = players[1].getPosition();
+            whitefeathertrack = players[2].getPosition();
+            redfeathertrack = players[3].getPosition();
+        }
     }
     public void Feathermovement(int currentPlayer){
-        if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
-            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
-            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+        if(gp.howManyPlayer==2){
+            if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[1].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
         }
-        if(feathers[1].getIndex()==players[currentPlayer].getPosition()){
-            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
-            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+        if(gp.howManyPlayer==3){
+            if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[1].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[2].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
         }
-        if(feathers[2].getIndex()==players[currentPlayer].getPosition()){
-            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
-            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+        if(gp.howManyPlayer==4){
+            if(feathers[0].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[1].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[2].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }
+            if(feathers[3].getIndex()==players[currentPlayer].getPosition()){
+                feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+                drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
+            }   
         }
-        if(feathers[3].getIndex()==players[currentPlayer].getPosition()){
-            feathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
-            drawfeathers[currentPlayer].setPosition(players[currentPlayer].getPosition());
-        }   
+        
     }
     // public void drawWinFeather(Graphics2D g2, int currentPlayer){
     //     bluefeather = null;
@@ -282,12 +355,23 @@ public class FeatherManager extends Entity{
             default:
                 break;
         }
-        
-        g2.drawImage(bluefeather, xy[(feathers[0].getPosition())%24].getX(),xy[(feathers[0].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(yellowfeather, xy[(feathers[1].getPosition())%24].getX(),xy[(feathers[1].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(whitefeather, xy[(feathers[2].getPosition())%24].getX(),xy[(feathers[2].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
-        g2.drawImage(redfeather, xy[(feathers[3].getPosition())%24].getX(),xy[(feathers[3].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
-        
-        
+        if(gp.howManyPlayer==2)
+        {
+            g2.drawImage(bluefeather, xy[(feathers[0].getPosition())%24].getX(),xy[(feathers[0].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellowfeather, xy[(feathers[1].getPosition())%24].getX(),xy[(feathers[1].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+        }
+        if(gp.howManyPlayer==3)
+        {
+            g2.drawImage(bluefeather, xy[(feathers[0].getPosition())%24].getX(),xy[(feathers[0].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellowfeather, xy[(feathers[1].getPosition())%24].getX(),xy[(feathers[1].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(whitefeather, xy[(feathers[2].getPosition())%24].getX(),xy[(feathers[2].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+        }
+        if(gp.howManyPlayer==4)
+        {
+            g2.drawImage(bluefeather, xy[(feathers[0].getPosition())%24].getX(),xy[(feathers[0].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(yellowfeather, xy[(feathers[1].getPosition())%24].getX(),xy[(feathers[1].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(whitefeather, xy[(feathers[2].getPosition())%24].getX(),xy[(feathers[2].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null);
+            g2.drawImage(redfeather, xy[(feathers[3].getPosition())%24].getX(),xy[(feathers[3].getPosition())%24].getY(), gp.chickensize, gp.chickensize, null); 
+        }  
     }
 }   
