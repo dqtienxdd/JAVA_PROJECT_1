@@ -182,8 +182,8 @@ public class UI {
         int height = gp.tileSize;
         int Xbox = getXforCenteredText(text)-gp.tileSize*3;
         int Ybox = gp.tileSize*6;
-        drawSubWindow(573, 350,width,height);
-        drawSubWindow(53, 350,width,height);
+        drawSubWindow(570, 350,width,height);
+        drawSubWindow(50, 350,width,height);
 
         g2.setColor(Color.white);
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));

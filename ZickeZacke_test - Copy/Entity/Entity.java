@@ -48,20 +48,6 @@ public class Entity {
     public static Player[] players;
     public static Feather[] feathers;
     public static Feather[] drawfeathers;
-    public boolean start;
-    public void setDefault(boolean start){
-        if(start==true){
-            playerposition1=0;
-            playerposition2=6;
-            playerposition3=12;
-            playerposition4=18;
-            bluefeathertrack=0;
-            yellowfeathertrack=6;
-            whitefeathertrack=12;
-            redfeathertrack=18;
-    }
-        }
-        
     public void setX(int x)
     {
         this.x=x;

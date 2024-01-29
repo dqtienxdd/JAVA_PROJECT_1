@@ -19,9 +19,10 @@ public class PLayerManager extends Entity {
     public MapCoordinate[] xy;
     Feather[] feathers = FeatherManager.getArray();
     
-    public PLayerManager(GamePanel gp){
+    public PLayerManager(GamePanel gp ){
         this.gp = gp;
         xy = new MapCoordinate[24];
+        
         setUpPlayer();
         setDefaultValue();
         getPlayerImage();
