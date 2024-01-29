@@ -16,7 +16,7 @@ public class Sound {
         soundURL[1] = getClass().getResource("/res/sound/feather_take_sound.wav");
         soundURL[2] = getClass().getResource("/res/sound/move_sound.wav");
         soundURL[3] = getClass().getResource("/res/sound/wrong_choose_sound.wav");
-
+        soundURL[4] = getClass().getResource("/res/sound/winning_sound.wav");
     }
     public void setFile(int i){
         try {

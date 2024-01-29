@@ -39,6 +39,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int octagonWidth = 70;
     public final int chickensize = 100;
     public final int arrowsize = 70;
+    public final int playerWinsize = 300;
     public boolean flip=false;
     public int selected;
     public int count=0;
@@ -52,8 +53,8 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int playState = 2;
     public final int endState = 3;
 
-   
- 
+    //game win
+    public int playerwin;
 
     int FPS = 55;
     public boolean start = false;
@@ -154,11 +155,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     }
     
     public void update(){
-       
         featherM.update();
         player.update();
         endG.update();
-        
     }
    
     public void paintComponent(Graphics g){
@@ -174,6 +173,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         if(gameState == endState) {
             ui.draw(g2);
             endG.drawVictory(g2);
+            endG.drawWinPlayer(g2,playerwin);
             // player.drawWinPlayer(g2, currentPlayer);
             // featherM.drawWinFeather(g2, currentPlayer);            
         }
@@ -422,6 +422,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
         }
         if(gameState==endState){
+
             if(mx >= 50 && mx<= 40+192){
                 if(my >= 350 && my<= 350+48){
                     playSE(0);
@@ -470,11 +471,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             if(dem%2==1){
                                 checkFeather(currentPlayer);
                                 if(players[currentPlayer].getIndex()!=0){
-                                    playSE(1);
+                                    
                                     feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                     drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                 }
-                                
+                                playSE(1);
                                 players[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount)%24);
                                 player.playermovement(currentPlayer);
                                 featherM.Feathermovement(currentPlayer);
@@ -501,11 +502,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                         if(dem%2==1){
                             if(players[currentPlayer].getIndex()!=0){
-                                playSE(2);
+                                
                                 feathers[currentPlayer].setPosition((feathers[currentPlayer].getPosition()+1)%24);
                                 drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
                             }
-                            
+                            playSE(2);
                             player.playermovement(currentPlayer);
                             featherM.Feathermovement(currentPlayer);
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
@@ -522,7 +523,10 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                     trackcount=0;
                     if(players[currentPlayer].getIndex() == howManyPlayer) {
+                        playerwin = currentPlayer;
                         gameState = endState;
+                        playSE(4);
+                        currentPlayer=0;
                     }
                 }
                 
