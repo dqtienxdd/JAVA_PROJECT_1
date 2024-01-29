@@ -52,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int choosePState = 1;
     public final int playState = 2;
     public final int endState = 3;
+    public final int HTPState = 4;
 
     //game win
     public int playerwin;
@@ -146,6 +147,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         if(gameState==titleState){
             ui.draw(g2);
         } 
+        if(gameState == HTPState) {
+            ui.draw(g2);
+        }
         if(gameState==choosePState){
             ui.draw(g2);
         }
@@ -373,36 +377,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        if(gameState==titleState){
-            if(mx >= 261 && mx<= 261+240){
-                if(my >= 303 && my<= 303+48){
-                    gameState=choosePState;
-                    playSE(0);
-                }
-            }
-            if(mx >= 261 && mx<= 261+240){
-                if(my >= 303+48 && my<= 303+48+48){
-                    playSE(0);
-                    System.exit(1);
-                }
-            }
-        }
-        if(gameState==endState){
-
-            if(mx >= 50 && mx<= 40+192){
-                if(my >= 350 && my<= 350+48){
-                    playSE(0);
-                    
-                    gameState=titleState;
-                }
-            }
-            if(mx >= 585 && mx<= 565+192){
-                if(my >= 350 && my<= 350+48){
-                    playSE(0);
-                    System.exit(1);
-                }
-            }
-        }
+        
     }
     int dem=0;
     int num=0;
@@ -497,7 +472,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }   
         }
         if(gameState==choosePState){
-            if(mx >= 261 && mx<= 261+240){
+            if(mx >= 286 && mx<= 286+240){
                 if(my >= 303 && my<= 303+48){
                     howManyPlayer = 2;
                     featherM.setUpFeatherManager();
@@ -510,7 +485,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     System.out.println(howManyPlayer);
                 }
             }
-            if(mx >= 261 && mx<= 261+240){
+            if(mx >= 286 && mx<= 286+240){
                 if(my >= 303+48 && my<= 303+48+48){
                     howManyPlayer = 3;
                     featherM.setUpFeatherManager();
@@ -523,7 +498,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     System.out.println(howManyPlayer);
                 }
             }
-            if(mx >= 261 && mx<= 261+240){
+            if(mx >= 286 && mx<= 286+240){
                 if(my >= 303+48+48 && my<= 303+48+48+48){
                     howManyPlayer = 4;
                     featherM.setUpFeatherManager();
@@ -536,7 +511,62 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     System.out.println(howManyPlayer);
                 }
             }
+            if(mx >= 286 && mx <= 286+240) {
+                if(my >= 303+48+48+48 && my<= 303+48+48+48+48){
+                    gameState = titleState;
+                    playSE(0);
+                    return;
+                }
+            }
         }   
+        if(gameState==titleState){
+            if(mx >= 758 && mx<= 758+48) {
+                if(my >= 10 && my <= 10 + 70) {
+                    gameState = HTPState;
+                    playSE(0);
+                    return;
+                }
+            }
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303 && my<= 303+48){
+                    gameState=choosePState;
+                    playSE(0);
+                    return;
+                }
+            }
+            if(mx >= 261 && mx<= 261+240){
+                if(my >= 303+48 && my<= 303+48+48){
+                    playSE(0);
+                    System.exit(1);
+                }
+            }
+        }
+        if(gameState==HTPState){
+            if(mx >= 758 && mx<= 758+48) {
+                if(my >= 10 && my <= 10 + 70) {
+                    gameState = titleState;
+                    playSE(0);
+                    return;
+                }
+            }
+        }
+        if(gameState==endState){
+
+            if(mx >= 53 && mx<= 40+192){
+                if(my >= 350 && my<= 350+48){
+                    playSE(0);
+                    
+                    gameState=titleState;
+                    return;
+                }
+            }
+            if(mx >= 573 && mx<= 565+192){
+                if(my >= 350 && my<= 350+48){
+                    playSE(0);
+                    System.exit(1);
+                }
+            }
+        }
     }
     @Override
     public void mouseReleased(MouseEvent e) {
