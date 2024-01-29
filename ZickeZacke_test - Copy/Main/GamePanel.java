@@ -420,7 +420,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 50 && mx<= 40+192){
                 if(my >= 350 && my<= 350+48){
                     playSE(0);
-                    setDefault();
+                    
                     gameState=titleState;
                 }
             }
@@ -482,8 +482,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                             else{
                                 if(dem%2==1){
-                                currentPlayer=(currentPlayer+1)%howManyPlayer;
-                                System.out.println("Player "+players[currentPlayer].getName()+" turn");
+                                    playSE(3);
+                                    currentPlayer=(currentPlayer+1)%howManyPlayer;
+                                    System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 }else dem=0;
                             }
                         
@@ -508,8 +509,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                         else{
                             if(dem%2==1){
-                            currentPlayer=(currentPlayer+1)%howManyPlayer;
-                            System.out.println("Player "+players[currentPlayer].getName()+" turn");
+                                playSE(3);
+                                currentPlayer=(currentPlayer+1)%howManyPlayer;
+                                System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             }else dem=0;
                         }  
                     }
