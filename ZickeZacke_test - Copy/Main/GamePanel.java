@@ -485,9 +485,14 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                             else{
                                 if(dem%2==1){
+<<<<<<< HEAD
                                     playSE(3);
                                     currentPlayer=(currentPlayer+1)%4;
                                     System.out.println("Player "+players[currentPlayer].getName()+" turn");
+=======
+                                currentPlayer=(currentPlayer+1)%howManyPlayer;
+                                System.out.println("Player "+players[currentPlayer].getName()+" turn");
+>>>>>>> parent of 40e6836 (1)
                                 }else dem=0;
                             }
                         
@@ -511,9 +516,14 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                         else{
                             if(dem%2==1){
+<<<<<<< HEAD
                                 playSE(3);
                                 currentPlayer=(currentPlayer+1)%4;
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
+=======
+                            currentPlayer=(currentPlayer+1)%howManyPlayer;
+                            System.out.println("Player "+players[currentPlayer].getName()+" turn");
+>>>>>>> parent of 40e6836 (1)
                             }else dem=0;
                         }  
                     }
