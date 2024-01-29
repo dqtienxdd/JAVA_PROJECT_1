@@ -57,8 +57,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int FPS = 55;
     Entity xdd;
     MouseListen mouse;
-    FeatherManager featherM = new FeatherManager(this);
-    PLayerManager player = new PLayerManager(this);
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
     
@@ -313,9 +311,12 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             }
             checkFeather(currentPlayer);
         }
+        
     }
+    public void playSE(int i){
+        sound.setFile(i);
+        sound.play();
     }
-    
     public Feather temp;
     public int feathercheck;
     public void takeFeather(int currentPlayer, int fraudChicken) {
@@ -397,10 +398,12 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303 && my<= 303+48){
                     gameState=choosePState;
+                    playSE(0);
                 }
             }
             if(mx >= 261 && mx<= 261+240){
                 if(my >= 303+48 && my<= 303+48+48){
+                    playSE(0);
                     System.exit(1);
                 }
             }
@@ -430,11 +433,11 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         int my = e.getY();
         selected=12;
         
-        if(gameState==playState){
-            
-               
+        if(gameState==playState){ 
             flip=true;
-            direction=1; 
+            direction=1;
+               
+            
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
@@ -451,6 +454,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             if(dem%2==1){
                                 checkFeather(currentPlayer);
                                 if(players[currentPlayer].getIndex()!=0){
+                                    playSE(1);
                                     feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                     drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                 }
@@ -467,7 +471,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                             else{
                                 if(dem%2==1){
-                                currentPlayer=(currentPlayer+1)%howManyPlayer;
+                                currentPlayer=(currentPlayer+1)%4;
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 }else dem=0;
                             }
@@ -480,6 +484,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                         if(dem%2==1){
                             if(players[currentPlayer].getIndex()!=0){
+                                playSE(2);
                                 feathers[currentPlayer].setPosition((feathers[currentPlayer].getPosition()+1)%24);
                                 drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
                             }
@@ -492,7 +497,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     }
                         else{
                             if(dem%2==1){
-                            currentPlayer=(currentPlayer+1)%howManyPlayer;
+                            currentPlayer=(currentPlayer+1)%4;
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             }else dem=0;
                         }  
@@ -510,6 +515,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(my >= 303 && my<= 303+48){
                     howManyPlayer = 2;
                     gameState=playState;
+                    playSE(0);
                     System.out.println(howManyPlayer);
                 }
             }
@@ -517,6 +523,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(my >= 303+48 && my<= 303+48+48){
                     howManyPlayer = 3;
                     gameState=playState;
+                    playSE(0);
                     System.out.println(howManyPlayer);
                 }
             }
@@ -524,6 +531,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(my >= 303+48+48 && my<= 303+48+48+48){
                     howManyPlayer = 4;
                     gameState=playState;
+                    playSE(0);
                     System.out.println(howManyPlayer);
                 }
             }
