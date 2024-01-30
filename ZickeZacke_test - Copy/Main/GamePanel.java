@@ -54,7 +54,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     public final int endState = 3;
     public final int HTPState = 4;
 
-    
+    public int playerwin;
     int FPS = 55;
     public boolean start = false;
     Entity xdd;
