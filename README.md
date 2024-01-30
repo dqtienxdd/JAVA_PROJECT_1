@@ -8,7 +8,7 @@ Grieffingdoor
 * Man Dat Nguyen - 1517103
 * Quang Tien Doan - 1522862
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right"></p>
 
 
 ## About the project
