@@ -136,6 +136,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         featherM.update();
         player.update();
         endG.update();
+        ui.update();
     }
    
     public void paintComponent(Graphics g){
@@ -147,6 +148,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         } 
         if(gameState == HTPState) {
             ui.draw(g2);
+            ui.drawPlayer(g2);
         }
         if(gameState==choosePState){
             ui.draw(g2);
@@ -553,8 +555,9 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
             if(mx >= 53 && mx<= 40+192){
                 if(my >= 350 && my<= 350+48){
                     playSE(0);
-                    
                     gameState=titleState;
+                    octagonM.getOctagonImage();
+                    tileM.getTileImage();
                     return;
                 }
             }

@@ -259,12 +259,7 @@ public class EndUI extends Entity {
             }
         }
         if(playerwin==2){
-            if(gp.howManyPlayer == 2) {
-                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(white, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
-                
-            }
+
             if(gp.howManyPlayer == 3) {
                 g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
                 g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
@@ -282,19 +277,6 @@ public class EndUI extends Entity {
             }
         }
         if(playerwin==3){
-            if(gp.howManyPlayer == 2) {
-                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
-                
-            }
-            if(gp.howManyPlayer == 3) {
-                g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(whitefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
-                g2.drawImage(red, 270 ,260, gp.playerWinsize, gp.playerWinsize, null);
-                
-            }
             if(gp.howManyPlayer == 4) {
                 g2.drawImage(bluefeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
                 g2.drawImage(yellowfeather,270,260,gp.playerWinsize, gp.playerWinsize,null);
