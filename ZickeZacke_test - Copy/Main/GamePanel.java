@@ -17,7 +17,7 @@ import Entity.Feather;
 import Entity.FeatherManager;
 import Entity.PLayerManager;
 import Entity.Player;
-import Entity.PlayerPositon;
+
 import Tile.Tile;
 import Tile.TileManager;
 import Octagon.Octagon;

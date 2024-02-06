@@ -358,89 +358,37 @@ public class UI extends Entity{
         x = 96;
         y += gp.tileSize;
         g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
+       
            
-        text = "Players take turns by looking at the next space in front of their chicken. The current player";
+        text = "Players take turns by looking at the next space in front of their chicken. The current \nplayer then choose an octagonal tile. If the picture on the tile matches, the player \ncan move their chicken to that space. If the picture does not match, the current \nplayer stays on the tile it has reached, and the next player takes a turn.";
         x = 72;
         y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "then chooses an octagonal tile. If the picture on the tile matches, the player can move their";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "chicken to that space. If the picture does not match, the current player stays on the tile it";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "has reached, and the next player takes a turn.";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-
+        for(String line : text.split("\n")){
+            g2.drawString(line, x, y);
+            y += 25;
+        };
         text = "Overtaking:";
         x = 96;
-        y += gp.tileSize;
+        y += gp.tileSize/2;
         g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "If a chicken catches up to another chicken, it can attempt to overtake by finding the matching";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "tile for the space in front of the other chicken. If successful, the overtaking chicken jumps in";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "front and steals all the feathers. The player's turn continues. A chicken can overtake multiple";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "chickens in one go if they are standing in an unbroken row.";
-        x = 72;
-        y += 25;
-        g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
 
+        text = "If a chicken catches up to another chicken, it can attempt to overtake by finding the \nmatching tile for the space in front of the other chicken. If successful, the \novertaking chicken jumps in front and steals all the feathers. The player's turn\ncontinues. A chicken can overtake multiple chickens in one go if they are standing\nin an unbroken row.";
+        x = 72;
+        y += 25;
+        for(String line : text.split("\n")){
+            g2.drawString(line, x, y);
+            y += 25;
+        };
+        
         text = "Winning Condition:";
         x = 96;
-        y += gp.tileSize;
+        y += gp.tileSize/2;
         g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
-        text = "The first chicken to collect all four feathers is the winner.";
+        
+        text = "The first chicken to collect all feathers of other players is the winner.";
         x = 72;
         y += 25;
         g2.drawString(text, x, y);
-        if(commandNum == 1){
-            g2.drawString(">", x - gp.tileSize, y);
-        }
         
         
         g2.setColor(new Color(255,255,255, 0));
