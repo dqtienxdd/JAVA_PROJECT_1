@@ -306,22 +306,48 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         feathercheck = players[fraudChicken].getIndex();
         if(feathercheck!=0){
             if(players[fraudChicken].getIndex()==1){
-                feathers[fraudChicken]= drawFeathers[currentPlayer];
-            }
-            if(players[fraudChicken].getIndex()>=1){
+                for(int i=0; i<howManyPlayer; i++)
+                {
+                    if(feathers[i].getPosition()==players[fraudChicken].getPosition()){
+                                feathers[i].setPosition(players[currentPlayer].getPosition());
+                                drawFeathers[i].setPosition(players[currentPlayer].getPosition());
+                            }
+                }
+            //     if(feathers[0].getPosition()==players[fraudChicken].getPosition()){
+            //         feathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
+            //         drawFeathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
+            //     }
+            //     if(feathers[1].getPosition()==players[fraudChicken].getPosition()){
+            //         feathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
+            //         drawFeathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
+            //     }
+            //     if(feathers[2].getPosition()==players[fraudChicken].getPosition()){
+            //         feathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
+            //         drawFeathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
+            //     }
+            //     if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
+            //         feathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
+            //         drawFeathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
+            //     }
+             }
+            if(players[fraudChicken].getIndex()>1){
                 if(howManyPlayer==4)
                 {
                     if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                        feathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+1)%4].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+1)%4]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+2)%4].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+2)%4]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+3)%4]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
                     }
                 }
                 if(howManyPlayer==3)
@@ -345,7 +371,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         feathers[(fraudChicken+1)%howManyPlayer]= drawFeathers[currentPlayer];
                     }
                 }
-                
             }
             players[currentPlayer].setIndex(players[currentPlayer].getIndex()+players[fraudChicken].getIndex());
             players[fraudChicken].setIndex(players[fraudChicken].getIndex()-players[fraudChicken].getIndex());
@@ -410,20 +435,24 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                     if(trackcount >= 1){
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+trackcount+1)%24].getName()){
                             trackcount = 0;
-                            
                             if(dem%2==1){
                                 checkFeather(currentPlayer);
                                 if(players[currentPlayer].getIndex()!=0){
-                                    
-                                    feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
-                                    drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
+                                    for(int i=0; i<howManyPlayer; i++)
+                                {
+                                    if(feathers[i].getPosition()==players[currentPlayer].getPosition())
+                                {
+                                    feathers[i].setPosition((players[currentPlayer].getPosition()+1+trackcount)%24);
+                                    drawFeathers[i].setPosition((players[currentPlayer].getPosition()+1+trackcount)%24);
+                                }                              
+                            }
+                                    // feathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
+                                    // drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount+1)%24);
                                 }
                                 playSE(1);
                                 players[currentPlayer].setPosition((players[currentPlayer].getPosition()+trackcount)%24);
                                 player.playermovement(currentPlayer);
-                                featherM.Feathermovement(currentPlayer);
-                                
-                                
+                                //featherM.Feathermovement(currentPlayer);
                                 System.out.println("Player "+players[currentPlayer].getName()+" turn");
                                 //System.out.println(players[currentPlayer].getPosition());
                             }else dem=0;
@@ -435,7 +464,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                                 }else dem=0;
                             }
                         
-                            
                     }
                     
                     if(trackcount==0){
@@ -443,13 +471,18 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                         
                         if(dem%2==1){
                             if(players[currentPlayer].getIndex()!=0){
-                                
-                                feathers[currentPlayer].setPosition((feathers[currentPlayer].getPosition()+1)%24);
-                                drawFeathers[currentPlayer].setPosition((players[currentPlayer].getPosition()+1)%24);
+                                for(int i=0; i<howManyPlayer; i++)
+                                {
+                                    if(feathers[i].getPosition()==players[currentPlayer].getPosition())
+                                {
+                                    feathers[i].setPosition((players[currentPlayer].getPosition()+1)%24);
+                                    drawFeathers[i].setPosition((players[currentPlayer].getPosition()+1)%24);
+                                }                              
+                            }
                             }
                             playSE(2);
                             player.playermovement(currentPlayer);
-                            featherM.Feathermovement(currentPlayer);
+                            //featherM.Feathermovement(currentPlayer);
                             System.out.println("Player "+players[currentPlayer].getName()+" turn");
                             //System.out.println(players[currentPlayer].getPosition());
                         }else dem=0;
