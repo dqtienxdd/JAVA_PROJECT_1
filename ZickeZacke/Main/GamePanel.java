@@ -8,7 +8,7 @@ import java.awt.event.MouseListener;
 import java.util.Arrays;
 import java.util.Random;
 
-import Main.MouseListen;
+
 import javax.swing.*;
 
 import Entity.EndUI;
@@ -18,10 +18,10 @@ import Entity.FeatherManager;
 import Entity.PLayerManager;
 import Entity.Player;
 
-import Tile.Tile;
-import Tile.TileManager;
-import Octagon.Octagon;
-import Octagon.OctagonManager;
+import Tiles.Tile;
+import Tiles.TileManager;
+import Octagons.Octagon;
+import Octagons.OctagonManager;
 public class GamePanel extends JPanel implements Runnable, ActionListener , MouseListener {
     final int originalTilesize = 16;
     final int scale = 3;
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
     int FPS = 55;
     public boolean start = false;
     Entity xdd;
-    MouseListen mouse;
+
     TileManager tileM = new TileManager(this);
     OctagonManager octagonM = new OctagonManager(this);
     FeatherManager featherM = new FeatherManager(this);
@@ -85,7 +85,7 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
 
     public GamePanel(){
         addMouseListener(this);
-        this.addMouseListener(new MouseListen());
+     
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.BLACK);
         this.setDoubleBuffered(true);

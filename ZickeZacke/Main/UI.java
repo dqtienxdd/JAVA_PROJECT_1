@@ -19,7 +19,7 @@ import Entity.Entity;
 import Entity.Feather;
 import Entity.FeatherManager;
 import Entity.PLayerManager;
-import Tile.Tile;
+import Tiles.Tile;
 
 public class UI extends Entity{
     GamePanel gp;
