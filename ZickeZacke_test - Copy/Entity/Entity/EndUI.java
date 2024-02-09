@@ -22,7 +22,6 @@ public class EndUI extends Entity {
     public MapCoordinate[] xy;
     
     Feather[] feathers = FeatherManager.getArray();
-    
     public EndUI(GamePanel gp ){
         this.gp = gp;
         
@@ -60,7 +59,6 @@ public class EndUI extends Entity {
         x = 408;
         y = 100;
         end = "normal";
-        
     }
 
          

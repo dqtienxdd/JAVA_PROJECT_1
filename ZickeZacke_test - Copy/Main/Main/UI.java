@@ -26,7 +26,7 @@ public class UI extends Entity{
     Graphics2D g2;
     Tile[] title;
     Font MaruMonika, purisaB;
-    JLabel label;
+
     public int commandNum = 0;
     public Rectangle playButton = new Rectangle(261,303, 240, 48);
     public Rectangle ExitButton = new Rectangle(261,303 + 48, 240, 48);
@@ -50,12 +50,7 @@ public class UI extends Entity{
 
 
 
-    public int getcommandNum(){
-        return this.commandNum;
-    }
-    public int setcommandNum(int commandNum){
-        return this.commandNum;
-    }
+  
     public UI(GamePanel gp){
         this.gp = gp;
         title = new Tile[10];

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="ZickeZacke_test - Copy/|ZickeZacke_test - Copy/|ZickeZacke_test - Copy/Main/|ZickeZacke_test - Copy/Entity/|ZickeZacke_test - Copy/Octagon/|ZickeZacke_test - Copy/Tile/" kind="src" path=""/>
-	<classpathentry excluding="Main/|Entity/|Octagon/|Tile/" kind="src" path="ZickeZacke_test - Copy"/>
+	<classpathentry excluding="ZickeZacke_test - Copy/Main/|ZickeZacke_test - Copy/Entity/|ZickeZacke_test - Copy/Octagon/|ZickeZacke_test - Copy/Tile/|ZickeZacke_test - Copy/|ZickeZacke_test - Copy/" kind="src" path=""/>
 	<classpathentry kind="src" path="ZickeZacke_test - Copy/Main"/>
 	<classpathentry kind="src" path="ZickeZacke_test - Copy/Entity"/>
 	<classpathentry kind="src" path="ZickeZacke_test - Copy/Octagon"/>
 	<classpathentry kind="src" path="ZickeZacke_test - Copy/Tile"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry excluding="Main/|Entity/|Octagon/|Tile/" kind="src" path="ZickeZacke_test - Copy"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
