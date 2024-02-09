@@ -1,12 +1,8 @@
 package Entity;
-
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-
 import javax.imageio.ImageIO;
-
 import Main.GamePanel;
-
 public class Feather {
     GamePanel gp;
     int x,y;

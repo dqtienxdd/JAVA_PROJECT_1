@@ -1,30 +1,20 @@
 package Entity;
 import Main.GamePanel;
-
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
-
 import javax.imageio.ImageIO;
-
-
-
 public class PLayerManager extends Entity {
     GamePanel gp;
     Graphics2D g2;
-    
-    
-
     public MapCoordinate[] xy;
     Feather[] feathers = FeatherManager.getArray();
     
     public PLayerManager(GamePanel gp){
         this.gp = gp;
-        xy = new MapCoordinate[24];
-        
-        
+        xy = new MapCoordinate[24];    
     }
     public void setUpPlayerManager()
     {

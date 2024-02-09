@@ -313,22 +313,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                                 drawFeathers[i].setPosition(players[currentPlayer].getPosition());
                             }
                 }
-            //     if(feathers[0].getPosition()==players[fraudChicken].getPosition()){
-            //         feathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
-            //         drawFeathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
-            //     }
-            //     if(feathers[1].getPosition()==players[fraudChicken].getPosition()){
-            //         feathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
-            //         drawFeathers[(fraudChicken+1)%4].setPosition(players[currentPlayer].getPosition());
-            //     }
-            //     if(feathers[2].getPosition()==players[fraudChicken].getPosition()){
-            //         feathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
-            //         drawFeathers[(fraudChicken+2)%4].setPosition(players[currentPlayer].getPosition());
-            //     }
-            //     if(feathers[(fraudChicken+3)%4].getPosition()==players[fraudChicken].getPosition()){
-            //         feathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
-            //         drawFeathers[(fraudChicken+3)%4].setPosition(players[currentPlayer].getPosition());
-            //     }
              }
             if(players[fraudChicken].getIndex()>1){
                 if(howManyPlayer==4)
@@ -353,22 +337,27 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                 if(howManyPlayer==3)
                 {
                     if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                        feathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+1)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+1)%howManyPlayer]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+1)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+1)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+2)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+2)%howManyPlayer]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+2)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+2)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
                     }
                 }
                 if(howManyPlayer==2)
                 {
                     if(feathers[fraudChicken].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[fraudChicken]= drawFeathers[currentPlayer];
+                        feathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[fraudChicken].setPosition(players[currentPlayer].getPosition());
                     }
                     if(feathers[(fraudChicken+1)%howManyPlayer].getPosition()==players[fraudChicken].getPosition()){
-                        feathers[(fraudChicken+1)%howManyPlayer]= drawFeathers[currentPlayer];
+                        feathers[(fraudChicken+1)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
+                        drawFeathers[(fraudChicken+1)%howManyPlayer].setPosition(players[currentPlayer].getPosition());
                     }
                 }
             }
@@ -398,20 +387,16 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         } 
        repaint();
         }
-    
-    
     @Override
     public void mouseClicked(MouseEvent e) {
         int mx = e.getX();
         int my = e.getY();
-        
     }
     int dem=0;
     int num=0;
     int trackcount2=0;
 
     @Override
-    
     public void mousePressed(MouseEvent e) {
         
         int mx = e.getX();
@@ -421,8 +406,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
         if(gameState==playState){ 
             flip=true;
             direction=1;
-               
-            
             for(Octagon oct1: octagons)
             {
                 if(oct1.collision(e.getX(), e.getY()))
@@ -465,7 +448,6 @@ public class GamePanel extends JPanel implements Runnable, ActionListener , Mous
                             }
                         
                     }
-                    
                     if(trackcount==0){
                         if(octagons[selected].getName()==egg[(players[currentPlayer].getPosition()+1)%24].getName()){
                         
