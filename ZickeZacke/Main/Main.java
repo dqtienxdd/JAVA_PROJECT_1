@@ -14,10 +14,7 @@ public class Main {
 
     GamePanel gamePanel = new GamePanel();
     window.add(gamePanel);
-        //ditmeduydinh
-        //ditmemandAT
-        //12345
-        // loz tien dit me may
+       
     window.pack();
 
     window.setLocationRelativeTo(null);
